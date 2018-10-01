@@ -96,6 +96,11 @@ $bodycolor:#628598;
 ion-content{
   background-color: $bodycolor!important;
 }
+
+ion-item {
+  background-color: $bodycolor !important;
+}
+
 $fontcolor:#d6ddde;
 .toolbar-title-md, .button-inner, ion-icon, span{
   color:$fontcolor!important;
