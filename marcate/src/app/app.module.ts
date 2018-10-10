@@ -10,9 +10,11 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { FeedPage } from '../pages/feed/feed'
-import { PostCreatPage } from '../pages/feed/post-creat/post-creat'
+import { FeedPage } from '../pages/feed/feed';
+import {PostPage} from '../pages/feed/post/post'
+
 import { PostViewPage } from  '../pages/feed/post-view/post-view'
+import {HeaderPage} from '../pages/header/header'
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -26,8 +28,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     FeedPage,
-    PostCreatPage,
-    PostViewPage
+    PostViewPage,
+    HeaderPage,
+    PostPage
   ],
   imports: [
     BrowserModule,
@@ -43,8 +46,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     FeedPage,
-    PostCreatPage,
-    PostViewPage
+    PostViewPage,
+    HeaderPage,
+    PostPage
   ],
   providers: [
     StatusBar,

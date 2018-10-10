@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {PostPage } from './post/post'
 
 
 
@@ -24,4 +25,7 @@ export class FeedPage {
     console.log('ionViewDidLoad FeedPage');
   }
 
+  createPost(){
+    this.navCtrl.push(PostPage);
+  }
 }
