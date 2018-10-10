@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
 @Component({
@@ -8,12 +8,11 @@ import { LoginPage } from '../login/login';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public events: Events) {
 
   }
 
   logout () {
-    this.navCtrl.setRoot(LoginPage, {}, {animate: true, direction: 'forward'});
-    this.navCtrl.popToRoot();
+    this.events.publish('user:logout');
   }
 }
