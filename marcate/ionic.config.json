@@ -1,5 +1,7 @@
 {
   "name": "marcate",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

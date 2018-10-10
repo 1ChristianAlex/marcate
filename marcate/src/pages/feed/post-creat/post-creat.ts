@@ -21,7 +21,9 @@ export class PostCreatPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostCreatPage');
   }
-  private showPost:boolean = false
+
+  private showPost:boolean;
+  
   showPostBtn(){
     this.showPost = true;
     
