@@ -5,16 +5,17 @@ import { MyApp } from './app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { Geolocation } from '@ionic-native/geolocation';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FeedPage } from '../pages/feed/feed';
-import {PostPage} from '../pages/feed/post/post'
+import { PostPage } from '../pages/feed/post/post'
 
 import { PostViewPage } from  '../pages/feed/post-view/post-view'
-import {HeaderPage} from '../pages/header/header'
+import { HeaderPage } from '../pages/header/header'
 import { FIREBASE_CONFIG } from './app.firebase.config';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -54,6 +55,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     Geolocation,
+    AndroidPermissions,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
