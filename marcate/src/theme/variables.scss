@@ -112,3 +112,20 @@ ion-navbar ion-title img{
   right: 10px;
   bottom: 10px;
 }
+#icon-back{
+  left:  10px;
+  bottom: 10px;
+}
+#posting{
+  right: 10px;
+  bottom: 10px;
+}
+ion-item.item-gadget{
+  width: 25%;
+  float: left;
+  text-align: center;
+  font-size: 17pt;
+}
+ion-item.item-gadget button{
+  padding: 15px!important;
+}

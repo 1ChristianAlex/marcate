@@ -21,6 +21,10 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { FileChooser } from "@ionic-native/file-chooser";
+import { FileOpener } from "@ionic-native/file-opener";
+import { FilePath } from "@ionic-native/file-path";
+
 @NgModule({
   declarations: [
     MyApp,
@@ -56,7 +60,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     Geolocation,
     AndroidPermissions,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FileChooser,
+    FileOpener,
+    FilePath
   ]
 })
 export class AppModule {}
