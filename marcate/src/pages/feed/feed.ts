@@ -27,6 +27,6 @@ export class FeedPage {
 
   createPost(){
     this.navCtrl.push(PostPage);
-    document.querySelector('.tabbar.show-tabbar').style.visibility = "hidden";
+    (document.querySelector('.tabbar.show-tabbar') as HTMLElement).style.visibility = "hidden";
 }
 }

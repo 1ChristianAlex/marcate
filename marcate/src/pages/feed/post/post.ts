@@ -24,7 +24,7 @@ export class PostPage {
 
   goBack(){
     this.navCtrl.pop();
-    document.querySelector('.tabbar.show-tabbar').style.visibility = "visible";
+    (document.querySelector('.tabbar.show-tabbar') as HTMLElement).style.visibility = "visible";
   }
   getImage(){
     this.fileChooser.open().then(file=>{
