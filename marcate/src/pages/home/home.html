@@ -4,7 +4,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div #map id="map"></div>
-  <button ion-button full (click)="addMarker()">+ marker</button>
+<ion-content style="position: relative">
+  <google-maps></google-maps>
+  <ion-list>
+    <button ion-item *ngFor="let barbearia of barbearias">
+      {{ barbearia.nome }}
+    </button>  
+  </ion-list>
 </ion-content>
