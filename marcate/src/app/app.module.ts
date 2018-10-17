@@ -12,7 +12,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FeedPage } from '../pages/feed/feed';
-import { PostPage } from '../pages/feed/post/post'
+import { PostPage } from '../pages/feed/post/post';
+import { GoogleMapsComponent } from '../components/google-maps/google-maps';
 
 import { PostViewPage } from  '../pages/feed/post-view/post-view'
 import { HeaderPage } from '../pages/header/header'
@@ -31,7 +32,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     FeedPage,
     PostViewPage,
     HeaderPage,
-    PostPage
+    PostPage,
+    GoogleMapsComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +58,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     Geolocation,
     AndroidPermissions,
+    GoogleMapsComponent,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
