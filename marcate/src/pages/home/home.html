@@ -7,7 +7,7 @@
 <ion-content style="position: relative">
   <google-maps></google-maps>
   <ion-list>
-    <button ion-item *ngFor="let barbearia of barbearias">
+    <button ion-item *ngFor="let barbearia of barbearias" (click)="showbarbershop(barbearia)">
       {{ barbearia.nome }}
     </button>  
   </ion-list>
