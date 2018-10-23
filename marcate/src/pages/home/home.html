@@ -7,8 +7,8 @@
 <ion-content style="position: relative">
   <google-maps></google-maps>
   <ion-list>
-    <button ion-item *ngFor="let barbearia of barbearias">
-      {{ barbearia.nome }}
-    </button>  
+    <ion-item *ngFor="let barbearia of barbearias | async" (click)="markBarberShop(barbearia)">
+      <h2>{{ barbearia.nome }}</h2>
+    </ion-item> 
   </ion-list>
 </ion-content>

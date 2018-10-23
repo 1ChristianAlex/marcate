@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { Geolocation } from "@ionic-native/geolocation";
+import { AngularFireDatabase } from "@angular/fire/database";
+import { Observable } from 'rxjs';
 
 declare var google;
 
@@ -10,23 +12,24 @@ declare var google;
 })
 export class HomePage {
   
+  barbearias: Observable<any[]>;
+
   constructor(
     public navCtrl: NavController, 
     public geolocation: Geolocation, 
     public alertCtrl: AlertController,
-    ) { }
+    public db: AngularFireDatabase
+    ) {
+      this.barbearias = this.db.list('barbearias').valueChanges();
+    }
     
-  barbearias =  [
-    {
-      nome: 'Teste 1'
-    },
-    {
-      nome: 'Teste 2'
-    },
-  ];
   
   ionViewDidLoad (){
     console.log('bom dia');
+  }
+
+  markBarberShop (barberShop) {
+
   }
 
 }
