@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ModelPost } from './model.postView';
 
 /**
  * Generated class for the PostViewPage page.
@@ -17,6 +18,7 @@ export class PostViewPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+  @Input() posts:ModelPost;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostViewPage');

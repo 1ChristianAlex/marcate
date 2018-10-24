@@ -1,6 +1,8 @@
 export interface ModelPost{
-    postHeader:string;
-    postImgPath?:string;
-    postTitle:string;
-    postText?:string;
+    userName:string;
+    datePost:string;
+    imgPath?:string;
+    postContent?:string;
+    likeCount:number;
+    comentCount:number;
 }
