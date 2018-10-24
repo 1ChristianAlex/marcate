@@ -26,7 +26,8 @@ export class GoogleMapsComponent {
     let mapOptions = {
       center: { lat: -19.8157, lng: -43.9542 },
       zoom: 10,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true
     }
     
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
@@ -45,13 +46,21 @@ export class GoogleMapsComponent {
     });
   }
 
-  addMarker () {
+  changeZoom (zoom) {
+    this.map.setZoom(zoom);
+  }
+
+  moveToPoint (lat, long) {
+    this.map.panTo({lat: lat, lng: long});
+  }
+
+  addMarker (lat, long, barbershop) {
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
+      position: {lat: lat, lng: long}
     });
-    let content = "<h4>Você está aqui!!</h4>";
+    let content = barbershop.nome;
     this.addInfoWindow(marker, content);
   }
 
