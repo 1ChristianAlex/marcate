@@ -32,11 +32,6 @@ export class HomePage {
   markBarberShop (barberShop) {
     this.mapObj.moveToPoint(barberShop.lat, barberShop.long);
     this.mapObj.addMarker(barberShop.lat, barberShop.long, barberShop);
-    // this.mapObj.moveToPoint(barberShop.lat, barberShop.long);
-  }
-
-  onScroll (event) {
-    console.log('sdasokd');
   }
 
 }
