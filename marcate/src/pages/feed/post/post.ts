@@ -5,6 +5,8 @@ import {FeedPage} from '../feed'
 import { FileChooser } from "@ionic-native/file-chooser";
 import { FileOpener } from "@ionic-native/file-opener";
 import { FilePath } from "@ionic-native/file-path";
+import { FirebaseServiceProvider } from '../../../providers/firebase-service/firebase-service';
+import { ModelPost } from '../post-view/model.postView';
 
 
 @IonicPage()
@@ -15,7 +17,13 @@ import { FilePath } from "@ionic-native/file-path";
 export class PostPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private fileChooser:FileChooser,
-    private fileOpener:FileOpener, private filePath:FilePath) {
+    private fileOpener:FileOpener, private filePath:FilePath, public dbService:FirebaseServiceProvider) {
+  }
+
+  post_save:ModelPost;
+
+  savePost(post_save){
+    this.dbService.savePost(post_save);
   }
 
   ionViewDidLoad() {

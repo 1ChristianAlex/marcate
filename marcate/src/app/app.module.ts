@@ -27,6 +27,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FileChooser } from "@ionic-native/file-chooser";
 import { FileOpener } from "@ionic-native/file-opener";
 import { FilePath } from "@ionic-native/file-path";
+import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { FilePath } from "@ionic-native/file-path";
     FileOpener,
     FilePath,
     GoogleMapsComponent,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseServiceProvider
   ]
 })
 export class AppModule {}
