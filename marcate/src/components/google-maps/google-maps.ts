@@ -51,9 +51,7 @@ export class GoogleMapsComponent {
   }
 
   moveToPoint (lat, long) {
-    this.changeZoom(10);
     this.map.panTo({lat: lat, lng: long});
-    this.changeZoom(15);
   }
 
   addMarker (lat, long, barbershop) {
@@ -73,7 +71,6 @@ export class GoogleMapsComponent {
     google.maps.event.addListener(marker, 'click', () => {
       infoWindow.open(this.map, marker);
     });
-    console.log(marker);
   }
 
 }
