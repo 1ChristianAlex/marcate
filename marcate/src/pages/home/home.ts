@@ -1,10 +1,8 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { Geolocation } from "@ionic-native/geolocation";
 import { AngularFireDatabase } from "@angular/fire/database";
 import { Observable } from 'rxjs';
-
-declare var google;
 
 @Component({
   selector: 'page-home',

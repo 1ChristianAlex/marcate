@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {FeedPage} from '../feed'
 
 import { FileChooser } from "@ionic-native/file-chooser";
 import { FileOpener } from "@ionic-native/file-opener";
