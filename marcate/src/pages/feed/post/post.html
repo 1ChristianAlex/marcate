@@ -31,7 +31,7 @@
       </button>
     </ion-item>
     <ion-item no-lines class ='item-gadget'>
-      <button ion-button > 
+      <button ion-button (click)="getPhoto()"> 
         <ion-icon name="camera"></ion-icon>
       </button>
     </ion-item>
@@ -46,6 +46,9 @@
       </button>
     </ion-item>
     
+    <div>
+      <img src="{{myPhoto}}" alt="">
+    </div>
   </div>
   
 </ion-content>
