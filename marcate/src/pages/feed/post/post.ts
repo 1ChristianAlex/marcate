@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FirebaseServiceProvider } from '../../../providers/firebase-service/firebase-service';
 import { ModelPost } from '../post-view/model.postView';
 import { Camera, CameraOptions } from "@ionic-native/camera";
+import { storage } from 'firebase';
 
 @IonicPage()
 @Component({
@@ -15,13 +16,11 @@ export class PostPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbService:FirebaseServiceProvider, private camera:Camera,) {
   }
 
-  post_save:ModelPost;
+  
 
   myPhoto:any;
+  in_post:string;
 
-  savePost(post_save){
-    this.dbService.savePost(post_save);
-  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostPage');
@@ -64,4 +63,22 @@ export class PostPage {
     });
   }
 
+ 
+  post_save:ModelPost;
+
+  savePost(){
+    this.post_save ={ userName : 'Christian Teste',
+    likeCount : 100,
+    comentCount :0,
+    postContent : this.in_post,
+    imgPath : this.myPhoto,
+    datePost : '10-12-19'}
+    console.log(this.post_save);
+
+  
+
+    const pic = storage().ref('teste');
+    pic.putString(this.myPhoto, 'data_url');
+    this.dbService.savePost(this.post_save);
+  }
 }
