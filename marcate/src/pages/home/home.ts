@@ -14,6 +14,8 @@ export class HomePage {
 
   barbearias: Observable<any[]>;
 
+  fabR:number = 30;
+
   constructor(
     public navCtrl: NavController, 
     public geolocation: Geolocation, 
@@ -21,6 +23,7 @@ export class HomePage {
     public db: AngularFireDatabase
     ) {
       this.barbearias = this.db.list('barbearias').valueChanges();
+      this.barbearias.subscribe((asd) => asd.forEach(item => this.mapObj.addMarker(item)));
   }
     
   ionViewDidLoad (){
@@ -29,7 +32,17 @@ export class HomePage {
 
   markBarberShop (barberShop) {
     this.mapObj.moveToPoint(barberShop.lat, barberShop.long);
-    this.mapObj.addMarker(barberShop.lat, barberShop.long, barberShop);
+    console.log(barberShop);
+  }
+
+  onScroll (event) {
+    console.log(event, this.fabR)
+    if (event.directionY == 'up') {
+      this.fabR = -80;
+    }
+    if (event.directionY == 'down') {
+      this.fabR = 30;
+    }
   }
 
 }
