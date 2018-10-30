@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,  } from 'ionic-angular';
 
 import { FirebaseServiceProvider } from '../../../providers/firebase-service/firebase-service';
 import { ModelPost } from '../post-view/model.postView';
@@ -13,12 +13,14 @@ import { storage } from 'firebase';
 })
 export class PostPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public dbService:FirebaseServiceProvider, private camera:Camera,) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public dbService:FirebaseServiceProvider, private camera:Camera
+    ) {
   }
 
   
 
-  myPhoto:any;
+  private myPhoto:any;
   in_post:string;
 
 
@@ -66,19 +68,25 @@ export class PostPage {
  
   post_save:ModelPost;
 
+
+
   savePost(){
+    let today = new Date()
     this.post_save ={ userName : 'Christian Teste',
     likeCount : 100,
     comentCount :0,
     postContent : this.in_post,
     imgPath : this.myPhoto,
-    datePost : '10-12-19'}
+    datePost : today.getMinutes().toString() }
     console.log(this.post_save);
-
-  
-
-    const pic = storage().ref('teste');
-    pic.putString(this.myPhoto, 'data_url');
     this.dbService.savePost(this.post_save);
+    this.navCtrl.pop();
+    this.saveImg();
   }
+  saveImg(){
+    const image = this.myPhoto;
+    const pic = storage().ref(`${this.post_save.userName}/${this.post_save.datePost}`);
+    pic.putString(image, 'data_url');
+  }
+
 }
