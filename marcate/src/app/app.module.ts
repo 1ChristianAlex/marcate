@@ -23,10 +23,8 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from "@ionic-native/camera";
 
-import { FileChooser } from "@ionic-native/file-chooser";
-import { FileOpener } from "@ionic-native/file-opener";
-import { FilePath } from "@ionic-native/file-path";
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 
 @NgModule({
@@ -66,12 +64,10 @@ import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-
     SplashScreen,
     Geolocation,
     AndroidPermissions,
-    FileChooser,
-    FileOpener,
-    FilePath,
     GoogleMapsComponent,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseServiceProvider
+    FirebaseServiceProvider,
+    Camera,
   ]
 })
 export class AppModule {}

@@ -21,7 +21,7 @@
     
     <ion-item id = input-post>
       <ion-label floating>O que você está pensando</ion-label>
-      <ion-input type="text" value=""></ion-input>
+      <ion-input [(ngModel)]="in_post" type="text" value=""></ion-input>
     </ion-item>
   </div>
   <div class="post-gadget">
@@ -31,7 +31,7 @@
       </button>
     </ion-item>
     <ion-item no-lines class ='item-gadget'>
-      <button ion-button > 
+      <button ion-button (click)="getPhoto()"> 
         <ion-icon name="camera"></ion-icon>
       </button>
     </ion-item>
@@ -46,6 +46,9 @@
       </button>
     </ion-item>
     
+    <div>
+      <img src="{{myPhoto}}" alt="">
+    </div>
   </div>
   
 </ion-content>

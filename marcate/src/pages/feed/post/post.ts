@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { FileChooser } from "@ionic-native/file-chooser";
-import { FileOpener } from "@ionic-native/file-opener";
-import { FilePath } from "@ionic-native/file-path";
 import { FirebaseServiceProvider } from '../../../providers/firebase-service/firebase-service';
 import { ModelPost } from '../post-view/model.postView';
-
+import { Camera, CameraOptions } from "@ionic-native/camera";
+import { storage } from 'firebase';
 
 @IonicPage()
 @Component({
@@ -15,15 +13,14 @@ import { ModelPost } from '../post-view/model.postView';
 })
 export class PostPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fileChooser:FileChooser,
-    private fileOpener:FileOpener, private filePath:FilePath, public dbService:FirebaseServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public dbService:FirebaseServiceProvider, private camera:Camera,) {
   }
 
-  post_save:ModelPost;
+  
 
-  savePost(post_save){
-    this.dbService.savePost(post_save);
-  }
+  myPhoto:any;
+  in_post:string;
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostPage');
@@ -33,13 +30,55 @@ export class PostPage {
     this.navCtrl.pop();
     (document.querySelector('.tabbar.show-tabbar') as HTMLElement).style.visibility = "visible";
   }
+  getPhoto(){
+    const options: CameraOptions = {
+      quality: 70,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64 (DATA_URL):
+     this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+     // Handle error
+    });
+  }
   getImage(){
-    this.fileChooser.open().then(file=>{
-      this.filePath.resolveNativePath(file).then(resolveFilePath =>{
-        this.fileOpener.open(resolveFilePath,'aplication/image').then(value=>{
-          alert('Worth')
-        })
-      })
-    })
+    const options: CameraOptions = {
+      quality: 70,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum:false
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64 (DATA_URL):
+     this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+     // Handle error
+    });
+  }
+
+ 
+  post_save:ModelPost;
+
+  savePost(){
+    this.post_save ={ userName : 'Christian Teste',
+    likeCount : 100,
+    comentCount :0,
+    postContent : this.in_post,
+    imgPath : this.myPhoto,
+    datePost : '10-12-19'}
+    console.log(this.post_save);
+
+  
+
+    const pic = storage().ref('teste');
+    pic.putString(this.myPhoto, 'data_url');
+    this.dbService.savePost(this.post_save);
   }
 }
