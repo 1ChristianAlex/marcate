@@ -22,13 +22,13 @@ export class FirebaseServiceProvider {
       console.log(r);
     });
   }
-  getPost(){
-    this.db.list('DB_POSTS').snapshotChanges().map(data =>{
-      return data.map(d => ({key:d.key,...d.payload.val()}));
+  // getPost(){
+  //   this.db.list('DB_POSTS').snapshotChanges().map(data =>{
+  //     return data.map(d => ({key:d.key,...d.payload.val()}));
 
-      });
+  //     });
     
-  }
+  // }
   sucessToaster(){
     let toast = this.toasteCtrl.create(
       {

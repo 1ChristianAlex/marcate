@@ -13,6 +13,7 @@ export class HomePage {
   @ViewChild('map') mapObj;
 
   barbearias: Observable<any[]>;
+  markers = [];
 
   fabR:number = 30;
 
@@ -23,26 +24,33 @@ export class HomePage {
     public db: AngularFireDatabase
     ) {
       this.barbearias = this.db.list('barbearias').valueChanges();
-      this.barbearias.subscribe((asd) => asd.forEach(item => this.mapObj.addMarker(item)));
+      this.barbearias.subscribe((eachBarberShop) => eachBarberShop.forEach((item, index) => {
+        console.log(eachBarberShop);
+        this.markers[index] = this.mapObj.addMarker(item);
+      }));
   }
     
   ionViewDidLoad (){
     console.log('bom dia');
   }
 
-  markBarberShop (barberShop) {
+  markBarberShop (barberShop, index) {
     this.mapObj.moveToPoint(barberShop.lat, barberShop.long);
-    console.log(barberShop);
+    this.mapObj.showInfoWindow(this.markers, index);
   }
 
   onScroll (event) {
-    console.log(event, this.fabR)
     if (event.directionY == 'up') {
       this.fabR = -80;
     }
     if (event.directionY == 'down') {
       this.fabR = 30;
     }
+  }
+
+  openBarberShopProfile (barberShop) {
+    // this.navCtrl.push(barberShop);
+    console.log('boa noiteeeeeee')
   }
 
 }

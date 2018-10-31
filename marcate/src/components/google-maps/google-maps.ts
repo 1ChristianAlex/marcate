@@ -1,8 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { AlertController } from 'ionic-angular';
+import { AlertController, NavController } from 'ionic-angular';
 import { Geolocation } from "@ionic-native/geolocation";
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { Platform } from 'ionic-angular';
+import { BarbeariaPage } from '../../pages/barbearia/barbearia';
 
 declare var google;
 
@@ -14,11 +15,13 @@ export class GoogleMapsComponent {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
+  infoWindows = [];
 
   constructor(
     public geolocation: Geolocation,
     public alertCtrl: AlertController,
     private androidPermissions: AndroidPermissions,
+    public navCtrl: NavController,
     public plt: Platform
   ) {}
 
@@ -80,17 +83,32 @@ export class GoogleMapsComponent {
       animation: google.maps.Animation.DROP,
       position: new google.maps.LatLng(barberShop.lat, barberShop.long)
     });
-    let content = barberShop.nome;
-    this.addInfoWindow(marker, content);
+    // let content = barberShop.nome;
+    this.addInfoWindow(marker, barberShop);
+    return marker;
   }
 
-  addInfoWindow (marker, content) {
+  addInfoWindow (marker, barberShop) {
     let infoWindow = new google.maps.InfoWindow({
-      content: content
+      content: `<h2 id="barber-link-${barberShop.nome}">${barberShop.nome}</h2>`
     });
     google.maps.event.addListener(marker, 'click', () => {
       infoWindow.open(this.map, marker);
     });
+    google.maps.event.addListener(infoWindow, 'domready', () => {
+
+      var clickableItem = document.getElementById(`barber-link-${barberShop.nome}`);
+        clickableItem.addEventListener('click', () => {
+        this.navCtrl.push(BarbeariaPage, { data: barberShop });
+      });
+      
+    });
+    this.infoWindows.push(infoWindow);
+  }
+
+  showInfoWindow (marker, index) {
+    this.infoWindows.forEach(item => item.close());
+    google.maps.event.trigger(marker[index], 'click');
   }
 
 }

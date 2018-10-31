@@ -12,7 +12,7 @@
   </ion-fab>
 
   <ion-list class="overflow-list">
-    <ion-item *ngFor="let barbearia of barbearias | async" (click)="markBarberShop(barbearia)">
+    <ion-item *ngFor="let barbearia of barbearias | async; index as i" (click)="markBarberShop(barbearia, i)">
       <h2>{{ barbearia.nome }}</h2>
       <span *ngFor="let s of ' '.repeat(barbearia.estrelas).split('')">
         <ion-icon name="star"></ion-icon>

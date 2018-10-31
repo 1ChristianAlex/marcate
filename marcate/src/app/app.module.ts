@@ -16,6 +16,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { FeedPage } from '../pages/feed/feed';
 import { PostPage } from '../pages/feed/post/post';
 import { GoogleMapsComponent } from '../components/google-maps/google-maps';
+import { BarbeariaPage } from "../pages/barbearia/barbearia";
 
 import { PostViewPage } from  '../pages/feed/post-view/post-view'
 import { HeaderPage } from '../pages/header/header'
@@ -38,6 +39,7 @@ import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-
     PostViewPage,
     HeaderPage,
     PostPage,
+    BarbeariaPage,
     GoogleMapsComponent
   ],
   imports: [
@@ -57,7 +59,8 @@ import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-
     FeedPage,
     PostViewPage,
     HeaderPage,
-    PostPage
+    PostPage,
+    BarbeariaPage
   ],
   providers: [
     StatusBar,
