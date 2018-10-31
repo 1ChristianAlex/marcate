@@ -1,3 +1,4 @@
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -16,6 +17,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { FeedPage } from '../pages/feed/feed';
 import { PostPage } from '../pages/feed/post/post';
 import { GoogleMapsComponent } from '../components/google-maps/google-maps';
+
+import { AuthService } from './../providers/auth/auth-service';
 
 import { PostViewPage } from  '../pages/feed/post-view/post-view'
 import { HeaderPage } from '../pages/header/header'
@@ -68,6 +71,7 @@ import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseServiceProvider,
     Camera,
+    AuthService,
   ]
 })
 export class AppModule {}
