@@ -1,3 +1,4 @@
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -17,6 +18,8 @@ import { FeedPage } from '../pages/feed/feed';
 import { PostPage } from '../pages/feed/post/post';
 import { GoogleMapsComponent } from '../components/google-maps/google-maps';
 import { BarbeariaPage } from "../pages/barbearia/barbearia";
+
+import { AuthService } from './../providers/auth/auth-service';
 
 import { PostViewPage } from  '../pages/feed/post-view/post-view'
 import { HeaderPage } from '../pages/header/header'
@@ -47,7 +50,7 @@ import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,6 +74,7 @@ import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseServiceProvider,
     Camera,
+    // AuthService,
   ]
 })
 export class AppModule {}

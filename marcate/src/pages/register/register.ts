@@ -1,5 +1,8 @@
+import { HomePage } from './../home/home';
+import { AuthService } from './../../providers/auth/auth-service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { User } from '../../providers/auth/user';
 
 /**
  * Generated class for the RegisterPage page.
@@ -15,17 +18,41 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  user = {}
+  user: User = new User();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public toastCtrl: ToastController,
+    // public authService: AuthService
+    ) {
+
+  }
+
+  ionViewDidLoad() {
     this.user = {
       email: '',
       password: ''
     }
-  }
-
-  ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
 
+  createAccout() {
+    let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
+    console.log('fds');
+
+    // this.authService.createUser(this.user)
+    // .then((user: any) => {
+    //   user.sendEmailVerification();
+    //   toast.setMessage('Usuário criado com sucesso');
+    //   toast.present();
+    //   // this.navCtrl.setRoot(HomePage);
+    // })
+    // .catch((error: any) => {
+    //   // if (error.code == '') {
+    //     toast.setMessage('Erro ao cadastrar');
+    //   // }
+    //   toast.present();
+    // });
+  }
 }
