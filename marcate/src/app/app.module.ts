@@ -71,7 +71,7 @@ import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseServiceProvider,
     Camera,
-    AuthService,
+    // AuthService,
   ]
 })
 export class AppModule {}
