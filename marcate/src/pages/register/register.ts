@@ -24,7 +24,7 @@ export class RegisterPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public authService: AuthService
+    // public authService: AuthService
     ) {
 
   }
@@ -39,18 +39,20 @@ export class RegisterPage {
 
   createAccout() {
     let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
-    this.authService.createUser(this.user)
-    .then((user: any) => {
-      user.sendEmailVerification();
-      toast.setMessage('Usuário criado com sucesso');
-      toast.present();
-      this.navCtrl.setRoot(HomePage);
-    })
-    .catch((error: any) => {
-      // if (error.code == '') {
-        toast.setMessage('Erro ao cadastrar');
-      // }
-      toast.present();
-    });
+    console.log('fds');
+
+    // this.authService.createUser(this.user)
+    // .then((user: any) => {
+    //   user.sendEmailVerification();
+    //   toast.setMessage('Usuário criado com sucesso');
+    //   toast.present();
+    //   // this.navCtrl.setRoot(HomePage);
+    // })
+    // .catch((error: any) => {
+    //   // if (error.code == '') {
+    //     toast.setMessage('Erro ao cadastrar');
+    //   // }
+    //   toast.present();
+    // });
   }
 }
