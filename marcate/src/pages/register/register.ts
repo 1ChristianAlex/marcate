@@ -1,5 +1,5 @@
-import { HomePage } from './../home/home';
-import { AuthService } from './../../providers/auth/auth-service';
+// import { HomePage } from './../home/home';
+// import { AuthService } from './../../providers/auth/auth-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { User } from '../../providers/auth/user';
@@ -39,7 +39,7 @@ export class RegisterPage {
 
   createAccout() {
     let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
-    console.log('fds');
+    console.log(toast);
 
     // this.authService.createUser(this.user)
     // .then((user: any) => {
