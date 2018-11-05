@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {PostPage } from './post/post'
 import { ModelPost } from './post-view/model.postView';
+import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
+
 
 
 
@@ -19,30 +21,31 @@ import { ModelPost } from './post-view/model.postView';
 })
 export class FeedPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db:FirebaseServiceProvider) {
   }
 
-  feedPost:ModelPost[] = [
-    {
-      userName:'Christian Alexsander',
-      datePost:"Today",
-      imgPath:"assets/imgs/corte.jpg",
-      postContent:"Miles Morales nascido em 3 de Agosto de 2002, é um super-herói fictício que aparece nas histórias em quadrinhos publicadas pela Marvel Comics, como um dos personagens que tem a identidade de Homem-Aranha. O personagem foi criado pelo escritor Brian Michael Bendis e o desenhista Sara Pichelli, e o editor-chefe Marvel Axel Alonso desenharam Miles com inspiração do presidente dos Estados Unidos Barack Obama e o ator americano Donald Glover.",
-      likeCount:550,
-      comentCount:20
-    },
-    {
-      userName:'Christian Alexsander',
-      datePost:"Today",
-      imgPath:"assets/imgs/thumb.jpg",
-      postContent:"Miles Morales nascido em 3 de Agosto de 2002, é um super-herói fictício que aparece nas histórias em quadrinhos publicadas pela Marvel Comics, como um dos personagens que tem a identidade de Homem-Aranha. O personagem foi criado pelo escritor Brian Michael Bendis e o desenhista Sara Pichelli, e o editor-chefe Marvel Axel Alonso desenharam Miles com inspiração do presidente dos Estados Unidos Barack Obama e o ator americano Donald Glover.",
-      likeCount:550,
-      comentCount:20
-    }
-  ]
+  feedPost:ModelPost[] = []
+  
+  FeedThe_feed(){
+    
+    this.db.post_list.subscribe((write_post)=> {
+      write_post.reverse().forEach((post_object:ModelPost,i,array)=> {
+        
+        this.feedPost[i] = post_object;
+        
+        })
+      })
+
+      
+
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FeedPage');
+    this.db.getPost();
+    this.FeedThe_feed();
+
+    
   }
 
   createPost(){

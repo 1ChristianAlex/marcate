@@ -26,6 +26,7 @@ export class PostPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostPage');
+    this.dbService.getPost();
   }
 
   goBack(){
@@ -77,10 +78,10 @@ export class PostPage {
     comentCount :0,
     postContent : this.in_post,
     imgPath : this.myPhoto,
-    datePost : today.getMinutes().toString() }
+    datePost : `${today.getHours().toString()} ${today.getDate().toString()} ${today.getMonth().toString()}  ` }
     console.log(this.post_save);
     this.dbService.savePost(this.post_save);
-    this.navCtrl.pop();
+    this.goBack();
     this.saveImg();
   }
   saveImg(){
