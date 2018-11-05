@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { ModelPost } from '../../pages/feed/post-view/model.postView';
-import { ToastController } from 'ionic-angular';
+
 import { Observable } from 'rxjs';
 import { FeedPage } from '../../pages/feed/feed';
 
@@ -15,7 +15,7 @@ import { FeedPage } from '../../pages/feed/feed';
 @Injectable()
 export class FirebaseServiceProvider {
 
-  constructor(public db: AngularFireDatabase, private toasteCtrl:ToastController) {
+  constructor(public db: AngularFireDatabase) {
     console.log('Hello FirebaseServiceProvider Provider');
   }
   post_list:Observable<any[]>;
@@ -34,16 +34,4 @@ export class FirebaseServiceProvider {
     
   }
 
-
-  sucessToaster(){
-    let toast = this.toasteCtrl.create(
-      {
-        message:'Sucesso na postagem',
-        duration:3000,
-        position:'bottom'
-      });
-      toast.onDidDismiss(() =>{
-        console.log('Dismissed toast');
-      })
-  }
 }

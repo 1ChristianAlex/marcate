@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import {PostPage } from './post/post'
 import { ModelPost } from './post-view/model.postView';
 import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
@@ -21,23 +21,28 @@ import { FirebaseServiceProvider } from '../../providers/firebase-service/fireba
 })
 export class FeedPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private db:FirebaseServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private db:FirebaseServiceProvider,
+    private loading:LoadingController) {
   }
 
   feedPost:ModelPost[] = []
   
+
   FeedThe_feed(){
-    
+    this.loadingBox();
     this.db.post_list.subscribe((write_post)=> {
       write_post.reverse().forEach((post_object:ModelPost,i,array)=> {
-        
         this.feedPost[i] = post_object;
-        
         })
       })
+  }
 
-      
-
+  loadingBox() {
+    const loader = this.loading.create({
+      content: "Por favor aguarde...",
+      duration: 3000
+    });
+    loader.present();
   }
 
   ionViewDidLoad() {
