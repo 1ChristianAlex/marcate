@@ -22,16 +22,17 @@ export class HomePage {
     public geolocation: Geolocation, 
     public alertCtrl: AlertController,
     public db: AngularFireDatabase
-    ) {
-      this.barbearias = this.db.list('barbearias').valueChanges();
-      this.barbearias.subscribe((eachBarberShop) => eachBarberShop.forEach((item, index) => {
-        console.log(eachBarberShop);
-        this.markers[index] = this.mapObj.addMarker(item);
-      }));
-  }
+    ) { }
     
   ionViewDidLoad (){
-    console.log('bom dia');
+    try {
+	      this.barbearias = this.db.list('barbearias').valueChanges();
+	      this.barbearias.subscribe((eachBarberShop) => eachBarberShop.forEach((item, index) => {
+	        this.markers[index] = this.mapObj.addMarker(item);
+	      }));
+	  } catch (err) {
+	  	console.log('deu ruim dmssss');
+	  }
   }
 
   markBarberShop (barberShop, index) {
@@ -40,10 +41,10 @@ export class HomePage {
   }
 
   onScroll (event) {
-    if (event.directionY == 'up') {
+    if (event.directionY == 'down') {
       this.fabR = -80;
     }
-    if (event.directionY == 'down') {
+    if (event.directionY == 'up') {
       this.fabR = 30;
     }
   }

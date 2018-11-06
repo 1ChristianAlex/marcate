@@ -1,5 +1,5 @@
-import { HomePage } from './../home/home';
-import { AuthService } from './../../providers/auth/auth-service';
+// import { HomePage } from './../home/home';
+// import { AuthService } from './../../providers/auth/auth-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { User } from '../../providers/auth/user';
@@ -38,7 +38,13 @@ export class RegisterPage {
   }
 
   createAccout() {
+<<<<<<< HEAD
     let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'})
+=======
+    let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
+    console.log(toast);
+
+>>>>>>> 3e63128c154ea49dfcc30e0d26da5dcead377c82
     // this.authService.createUser(this.user)
     // .then((user: any) => {
     //   toast.setMessage('Usuário Criado com sucesso');

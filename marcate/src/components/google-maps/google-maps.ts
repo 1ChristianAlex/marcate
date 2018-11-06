@@ -17,6 +17,8 @@ export class GoogleMapsComponent {
   map: any;
   infoWindows = [];
 
+  public listenersAdded: Array<String> = []
+
   constructor(
     public geolocation: Geolocation,
     public alertCtrl: AlertController,
@@ -55,7 +57,6 @@ export class GoogleMapsComponent {
         var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         this.map.panTo(latLng);
         this.map.setZoom(15);
-        console.log('carregou o mapa mann');
       }, (err) => {
         console.log(err)
         let alert = this.alertCtrl.create({
@@ -96,13 +97,16 @@ export class GoogleMapsComponent {
       infoWindow.open(this.map, marker);
     });
     google.maps.event.addListener(infoWindow, 'domready', () => {
+      if (this.listenersAdded.indexOf(`barber-link-${barberShop.nome}`) == -1) {
+        this.listenersAdded.push(`barber-link-${barberShop.nome}`)
 
-      var clickableItem = document.getElementById(`barber-link-${barberShop.nome}`);
+        var clickableItem = document.getElementById(`barber-link-${barberShop.nome}`);
         clickableItem.addEventListener('click', () => {
-        this.navCtrl.push(BarbeariaPage, { data: barberShop });
-      });
-      
+          this.navCtrl.push(BarbeariaPage, { data: barberShop });
+        });
+      }
     });
+
     this.infoWindows.push(infoWindow);
   }
 
