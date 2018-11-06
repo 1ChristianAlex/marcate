@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { Geolocation } from "@ionic-native/geolocation";
 import { AngularFireDatabase } from "@angular/fire/database";
 import { Observable } from 'rxjs';
@@ -21,12 +21,14 @@ export class HomePage {
     public navCtrl: NavController, 
     public geolocation: Geolocation, 
     public alertCtrl: AlertController,
-    public db: AngularFireDatabase
+    public db: AngularFireDatabase,
+    private loading:LoadingController
     ) { }
     
   ionViewDidLoad (){
     try {
-	      this.barbearias = this.db.list('barbearias').valueChanges();
+        this.barbearias = this.db.list('barbearias').valueChanges();
+        this.loadingBox('Carregando lista de barbearias, aguarde...');
 	      this.barbearias.subscribe((eachBarberShop) => eachBarberShop.forEach((item, index) => {
 	        this.markers[index] = this.mapObj.addMarker(item);
 	      }));
@@ -49,9 +51,12 @@ export class HomePage {
     }
   }
 
-  openBarberShopProfile (barberShop) {
-    // this.navCtrl.push(barberShop);
-    console.log('boa noiteeeeeee')
+  loadingBox(text) {
+    const loader = this.loading.create({
+      content: text,
+      duration: 3000
+    });
+    loader.present();
   }
 
 }

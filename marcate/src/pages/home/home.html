@@ -5,18 +5,25 @@
 </ion-header>
 
 <ion-content style="position: relative" (ionScroll)="onScroll($event)">
-  <google-maps #map id="mapFromGoogle"></google-maps>
+  <div id="home-wrapper">
+    <google-maps #map id="mapFromGoogle"></google-maps>
+    <ion-list class="overflow-list">
+      <ion-card *ngFor="let barbearia of barbearias | async; index as i" (click)="markBarberShop(barbearia, i)">
+        <img src="assets/imgs/barbearia.jpg"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{ barbearia.nome }}
+          </ion-card-title>
+          <span *ngFor="let s of ' '.repeat(barbearia.estrelas).split('')">
+            <ion-icon name="star" color="yellow"></ion-icon>
+          </span>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </div>
 
   <ion-fab right bottom class="ionfab" [style.right.px]="fabR">
-      <button ion-fab><ion-icon name="search"></ion-icon></button>
+    <button ion-fab><ion-icon name="search"></ion-icon></button>
   </ion-fab>
 
-  <ion-list class="overflow-list">
-    <ion-item *ngFor="let barbearia of barbearias | async; index as i" (click)="markBarberShop(barbearia, i)">
-      <h2>{{ barbearia.nome }}</h2>
-      <span *ngFor="let s of ' '.repeat(barbearia.estrelas).split('')">
-        <ion-icon name="star"></ion-icon>
-      </span>
-    </ion-item> 
-  </ion-list>
 </ion-content>
