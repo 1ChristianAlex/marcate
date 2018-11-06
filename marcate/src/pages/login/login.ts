@@ -19,7 +19,8 @@ export class LoginPage {
   }
 
   login () {
-    this.navCtrl.push(TabsPage);
+    // this.navCtrl.push(TabsPage);
+    this.navCtrl.setRoot(TabsPage);
   }
 
   register () {
