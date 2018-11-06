@@ -38,21 +38,16 @@ export class RegisterPage {
   }
 
   createAccout() {
-    let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
-    console.log('fds');
-
+    let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'})
     // this.authService.createUser(this.user)
     // .then((user: any) => {
-    //   user.sendEmailVerification();
-    //   toast.setMessage('Usuário criado com sucesso');
+    //   toast.setMessage('Usuário Criado com sucesso');
     //   toast.present();
-    //   // this.navCtrl.setRoot(HomePage);
+
+    //   // this.navCtrl.setRoot()
     // })
-    // .catch((error: any) => {
-    //   // if (error.code == '') {
-    //     toast.setMessage('Erro ao cadastrar');
-    //   // }
-    //   toast.present();
+    // .catch(error => {
+    //   console.log('error =>>',error);
     // });
   }
 }

@@ -7,6 +7,8 @@ import { NavController } from 'ionic-angular';
 })
 export class ContactPage {
 
+  pet: any;
+
   constructor(public navCtrl: NavController) {
 
   }
