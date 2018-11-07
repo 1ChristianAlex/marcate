@@ -3,7 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { ModelPost } from '../../pages/feed/post-view/model.postView';
 
 import { Observable } from 'rxjs';
-import { FeedPage } from '../../pages/feed/feed';
+// import { FeedPage } from '../../pages/feed/feed';
 
 
 /*

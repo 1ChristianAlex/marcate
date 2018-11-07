@@ -38,7 +38,8 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #afb4b7,
-  dark:       #222
+  dark:       #222,
+  yellow:     #ffff00
 );
 
 
@@ -93,7 +94,11 @@ $tabs-tab-color-inactive:#628598;
 $toolbar-background: #223138;
 $text-color:#d6ddde;
 
-
+ion-content{
+  background-image: url('../assets/imgs/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 span{
   color:$text-color;
 }

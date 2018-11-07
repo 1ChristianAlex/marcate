@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Pattaya';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Pattaya_400_normal.eot); /* http://fonts.gstatic.com/s/pattaya/v3/ea8ZadcqV_zkHY-XBdet8g.eot */
+    src: local('☺'),
+        url(Pattaya_400_normal.eot?#iefix) format('embedded-opentype'), /* http://fonts.gstatic.com/s/pattaya/v3/ea8ZadcqV_zkHY-XBdet8g.eot */
+        url(Pattaya_400_normal.woff2) format('woff2'), /* http://fonts.gstatic.com/s/pattaya/v3/ea8ZadcqV_zkHY-XBdet9g.woff2 */
+        url(Pattaya_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/pattaya/v3/ea8ZadcqV_zkHY-XBdet8A.woff */
+        url(Pattaya_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/pattaya/v3/ea8ZadcqV_zkHY-XBdet80RHiVo.ttf */
+        url(Pattaya_400_normal.svg#Pattaya_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=ea8ZadcqV_zkHY-XBdet8Q&skey=16793223d51a74bc&v=v3#Pattaya */
+}
