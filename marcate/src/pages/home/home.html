@@ -9,7 +9,7 @@
     <google-maps #map id="mapFromGoogle"></google-maps>
     <ion-list class="overflow-list">
       <ion-card *ngFor="let barbearia of barbearias | async; index as i" (click)="markBarberShop(barbearia, i)">
-        <img src="assets/imgs/barbearia.jpg"/>
+        <img src="{{ 'assets/imgs/barbearia'+i+'.jpg' }}"/>
         <ion-card-content>
           <ion-card-title>
             {{ barbearia.nome }}

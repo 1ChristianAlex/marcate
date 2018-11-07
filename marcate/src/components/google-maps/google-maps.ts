@@ -57,6 +57,10 @@ export class GoogleMapsComponent {
         var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         this.map.panTo(latLng);
         this.map.setZoom(15);
+        let infoWindow = new google.maps.InfoWindow;
+        infoWindow.setPosition(latLng);
+        infoWindow.setContent('Você está aqui!');
+        infoWindow.open(this.map);
       }, (err) => {
         console.log(err)
         let alert = this.alertCtrl.create({
@@ -103,7 +107,7 @@ export class GoogleMapsComponent {
 
         var clickableItem = document.getElementById(`barber-link-${barberShop.nome}`);
         clickableItem.addEventListener('click', () => {
-          this.navCtrl.push(BarbeariaPage, { data: barberShop });
+          this.navCtrl.push(BarbeariaPage, { data: barberShop, index: this.listenersAdded.indexOf(`barber-link-${barberShop.nome}`) });
         });
       }
     });

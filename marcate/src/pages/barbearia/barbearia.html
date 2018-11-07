@@ -14,8 +14,27 @@
 
 
 <ion-content padding>
+  <ion-icon id="back-icon" name="arrow-back" (click)="back()"></ion-icon>
 
-  {{ barbearia.nome }}
-  <button ion-button block (click)="back()">Voltar</button>
+  <div class="wrapper">
+    <img id="barber-avatar" src="{{ 'assets/imgs/barbearia'+index+'.jpg' }}"/>
+    <ion-list no-lines style="padding-top: 20px">
+
+        <ion-item>
+          <ion-icon name="pricetag" item-start></ion-icon>
+          <h2>Nome</h2>
+          <p>{{ barbearia.nome }}</p>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="star" item-start></ion-icon>
+          <h2>Ranking</h2>
+          <span *ngFor="let s of ' '.repeat(barbearia.estrelas).split('')">
+            <ion-icon name="star" color="yellow"></ion-icon>
+          </span>
+        </ion-item>
+
+    </ion-list>
+  </div>
 
 </ion-content>

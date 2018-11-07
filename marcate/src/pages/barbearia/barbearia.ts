@@ -16,9 +16,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class BarbeariaPage {
 
   barbearia = {}
+  index;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.barbearia = navParams.get('data');
+    this.index = Math.floor((Math.random() * 7) + 1);
   }
 
   ionViewDidLoad() {
