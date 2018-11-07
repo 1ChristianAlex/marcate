@@ -27,6 +27,7 @@ export class PostPage {
     ionViewDidLoad() {
       console.log('ionViewDidLoad PostPage');
       this.dbService.getPost();
+      console.log(this.myPhoto)
     }
     
     goBack(){
@@ -114,6 +115,8 @@ export class PostPage {
           console.log('Dismissed toast');
         })
       }
-      
+      removeImage(){
+        this.myPhoto = undefined;
+      }
     }
     

@@ -1,3 +1,14 @@
 page-post {
-
+    .post-gadget{
+        clear: both;
+      height: 70px;
+    }
+    .image-preview{
+        position: relative;
+    }
+    .btn-exclud{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
 }
