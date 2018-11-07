@@ -31,14 +31,14 @@ import { Camera } from "@ionic-native/camera";
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
-const fireaseConfig = {
-    apiKey: "AIzaSyDkLNagEN4Z27Tzl6Kiq1AHJMpXT1j-kgo",
-    authDomain: "marcate-una.firebaseapp.com",
-    databaseURL: "https://marcate-una.firebaseio.com",
-    projectId: "marcate-una",
-    storageBucket: "marcate-una.appspot.com",
-    messagingSenderId: "418090050537"
-}
+// const fireaseConfig = {
+//     apiKey: "AIzaSyDkLNagEN4Z27Tzl6Kiq1AHJMpXT1j-kgo",
+//     authDomain: "marcate-una.firebaseapp.com",
+//     databaseURL: "https://marcate-una.firebaseio.com",
+//     projectId: "marcate-una",
+//     storageBucket: "marcate-una.appspot.com",
+//     messagingSenderId: "418090050537"
+// }
 
 @NgModule({
   declarations: [
@@ -83,7 +83,7 @@ const fireaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseServiceProvider,
     Camera,
-    // AuthService,
+    AuthService,
   ]
 })
 export class AppModule {}

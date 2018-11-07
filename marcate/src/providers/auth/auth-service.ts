@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-<<<<<<< HEAD
-import { AngularFireAuth } from 'angularfire2/auth';
-=======
-// import { AngularFireAuth } from '@angular/fire/auth';
->>>>>>> 3e63128c154ea49dfcc30e0d26da5dcead377c82
+import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from './user';
 import * as firebase from 'firebase/app';
 
@@ -21,8 +17,14 @@ export class AuthService {
     return this.angularFireAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
   }
 
-  // signOut() {
-  //   return this.angularFireAuth.auth.signalOut();
-  // }
+  signOut() {
+    console.log('Entrou no logout');
+
+    return this.angularFireAuth.auth.signOut();
+  }
+
+  signIn(user) {
+    return this.angularFireAuth.auth.signInAndRetrieveDataWithEmailAndPassword(user.email, user.password);
+  }
 
 }
