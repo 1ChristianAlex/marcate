@@ -1,3 +1,14 @@
 page-header {
-
+    @font-face {
+        font-family: 'Pattaya', sans-serif;
+        src: url('../../assets/fonts/Pattaya_400_normal.woff');
+    }
+.header-logo{
+font-family: 'Pattaya';
+span{
+    position: relative;
+    top: -15px;
+    padding-left: 10px;
+}
+}
 }

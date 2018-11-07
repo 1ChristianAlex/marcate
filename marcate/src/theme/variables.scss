@@ -102,7 +102,10 @@ ion-content{
 span{
   color:$text-color;
 }
-
+.btn-ionic{
+  width: 56px;
+  height: 56px!important;
+}
 .item-md{
   background-color: transparent!important;
 }

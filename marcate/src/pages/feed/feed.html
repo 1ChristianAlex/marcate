@@ -17,6 +17,6 @@
   <div class="postFeed" *ngFor="let item of feedPost">
     <page-post-view [posts] = 'item' ></page-post-view>
   </div>
-  <button ion-fixed ion-button icon-only id ='icon-post' (click)="createPost()"><ion-icon name="add"></ion-icon></button>
+  <button class= 'btn-ionic' ion-fixed ion-button round icon-only id ='icon-post' (click)="createPost()"><ion-icon name="add"></ion-icon></button>
   
 </ion-content>

@@ -14,8 +14,8 @@
 
 <ion-content padding >
   
-  <button ion-fixed ion-button icon-only id ='icon-back' (click)="goBack()"><ion-icon name="arrow-round-back"></ion-icon></button>
-  <button ion-fixed ion-button icon-only id = 'posting' (click)="savePost(post_save)"><ion-icon name="create"></ion-icon></button>
+  <button class = 'btn-ionic' ion-fixed ion-button round icon-only id ='icon-back' (click)="goBack()"><ion-icon name="arrow-round-back"></ion-icon></button>
+  <button class = 'btn-ionic' ion-fixed ion-button round icon-only id = 'posting' (click)="savePost(post_save)"><ion-icon name="create"></ion-icon></button>
   
   <div class="input-post-area">
     
@@ -26,29 +26,34 @@
   </div>
   <div class="post-gadget">
     <ion-item no-lines class ='item-gadget'>
-      <button ion-button (click)="getImage()"> 
+      <button ion-button round (click)="getImage()"> 
         <ion-icon name="image"></ion-icon>
       </button>
     </ion-item>
     <ion-item no-lines class ='item-gadget'>
-      <button ion-button (click)="getPhoto()"> 
+      <button ion-button round (click)="getPhoto()"> 
         <ion-icon name="camera"></ion-icon>
       </button>
     </ion-item>
     <ion-item no-lines class ='item-gadget'>
-      <button ion-button > 
+      <button ion-button round > 
         <ion-icon name="pin"></ion-icon>
       </button>
     </ion-item>
     <ion-item no-lines class ='item-gadget'>
-      <button ion-button > 
+      <button ion-button round > 
         <ion-icon name="bookmark"></ion-icon>
       </button>
     </ion-item>
-    
-    <div>
-      <img src="{{myPhoto}}" alt="">
     </div>
-  </div>
+    <div class="image-preview">
+        <div class="btn-exclud" *ngIf='myPhoto != undefined'>
+            <button ion-button round (click)="removeImage()" > 
+          <ion-icon  name="trash"></ion-icon>
+        </button>
+        </div>
+        <h5>{{in_post}}</h5>
+        <img src="{{myPhoto}}" alt="">
+      </div>
   
 </ion-content>
