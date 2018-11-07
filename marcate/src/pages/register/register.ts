@@ -1,5 +1,6 @@
-// import { HomePage } from './../home/home';
-// import { AuthService } from './../../providers/auth/auth-service';
+import { TabsPage } from './../tabs/tabs';
+import { HomePage } from './../home/home';
+import { AuthService } from './../../providers/auth/auth-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { User } from '../../providers/auth/user';
@@ -19,12 +20,13 @@ import { User } from '../../providers/auth/user';
 export class RegisterPage {
 
   user: User = new User();
+  public regexpEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    // public authService: AuthService
+    public authService: AuthService
     ) {
 
   }
@@ -37,22 +39,23 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
 
+
+  // if (this.regexpEmail.test(this.user.email)) {
+
   createAccout() {
     let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
     console.log(toast);
 
-    // this.authService.createUser(this.user)
-    // .then((user: any) => {
-    //   user.sendEmailVerification();
-    //   toast.setMessage('Usuário criado com sucesso');
-    //   toast.present();
-    //   // this.navCtrl.setRoot(HomePage);
-    // })
-    // .catch((error: any) => {
-    //   // if (error.code == '') {
-    //     toast.setMessage('Erro ao cadastrar');
-    //   // }
-    //   toast.present();
-    // });
+    this.authService.createUser(this.user)
+    .then((user: any) => {
+      toast.setMessage('Usuário Criado com sucesso');
+      toast.present();
+
+      this.navCtrl.setRoot(TabsPage);
+    })
+    .catch(error => {
+      toast.setMessage(error.code);
+      console.log('error =>>',error);
+    });
   }
 }

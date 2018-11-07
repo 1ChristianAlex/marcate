@@ -7,11 +7,102 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="agenda">
+        Agenda
+      </ion-segment-button>
+      <ion-segment-button value="fidelidade">
+        Fidelidade
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'agenda'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-puppy-1.jpg">
+        </ion-thumbnail>
+        <h2>Ruby</h2>
+      </ion-item>
+      ...
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'kittens'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      ...
+    </ion-list>
+  </div>
+
+
+  <div >
+    <ion-card tappable>
+      <ion-card-content style="border-left: 18px solid #F2D1A6;">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Operação:
+                </small>
+                <small>
+                  fds
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Local:
+                </small>
+                <small>
+                  gfd
+                </small>
+              </div>
+            </ion-col>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Oferta:
+                </small>
+                <small class="pap-text-red">
+                  fds
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Função:
+                </small>
+                <small>
+                  fds
+                </small>
+              </div>
+            </ion-col>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Data:
+                </small>
+                <small>
+                  fds
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

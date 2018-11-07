@@ -7,8 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { AngularFireAuthModule } from "angularfire2/auth";
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -19,7 +18,7 @@ import { PostPage } from '../pages/feed/post/post';
 import { GoogleMapsComponent } from '../components/google-maps/google-maps';
 import { BarbeariaPage } from "../pages/barbearia/barbearia";
 
-import { AuthService } from './../providers/auth/auth-service';
+import { AuthService } from '../providers/auth/auth-service';
 
 import { PostViewPage } from  '../pages/feed/post-view/post-view'
 import { HeaderPage } from '../pages/header/header'
@@ -30,6 +29,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from "@ionic-native/camera";
 
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
+// const fireaseConfig = {
+//     apiKey: "AIzaSyDkLNagEN4Z27Tzl6Kiq1AHJMpXT1j-kgo",
+//     authDomain: "marcate-una.firebaseapp.com",
+//     databaseURL: "https://marcate-una.firebaseio.com",
+//     projectId: "marcate-una",
+//     storageBucket: "marcate-una.appspot.com",
+//     messagingSenderId: "418090050537"
+// }
 
 @NgModule({
   declarations: [
@@ -74,7 +83,7 @@ import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseServiceProvider,
     Camera,
-    // AuthService,
+    AuthService,
   ]
 })
 export class AppModule {}
