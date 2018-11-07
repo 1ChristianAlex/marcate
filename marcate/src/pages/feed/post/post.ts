@@ -6,6 +6,7 @@ import { ModelPost } from '../post-view/model.postView';
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { storage } from 'firebase';
 
+
 @IonicPage()
 @Component({
   selector: 'page-post',
@@ -76,7 +77,7 @@ export class PostPage {
       try {
         
         let today = new Date()
-        this.post_save ={ userName : 'Christian Teste',
+        this.post_save ={ userName : 'Teste Marcate',
         likeCount : 0,
         comentCount :0,
         postContent : this.in_post,

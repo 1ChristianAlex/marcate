@@ -21,17 +21,26 @@ export class LoginPage {
     ) { }
 
   signIn () {
-    let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
-    this.authService.signIn(this.user)
-    .then(() => {
-      this.navCtrl.setRoot(TabsPage);
-    })
-    .catch(error => {
-      toast.setMessage('ERRO =>');
-      toast.present();
-      console.log('ERROR => ', error);
+ try {
+  let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
+  
+  this.authService.signIn(this.user)
+  .then(() => {
+    this.navCtrl.setRoot(TabsPage);
+    
+  })
+  .catch(error => {
+    toast.setMessage('ERRO =>');
+    toast.present();
+    console.log('ERROR => ', error);
 
-    });
+  });
+ } catch (error) {
+  let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
+   console.log(error)
+   toast.setMessage('Erro ao fazer login');
+    toast.present();
+ }
 
   }
 

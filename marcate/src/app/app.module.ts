@@ -9,6 +9,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from "angularfire2/auth";
 
+import { LoginPage } from '../pages/login/login';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -49,6 +50,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     TabsPage,
     FeedPage,
     PostViewPage,
+    LoginPage,
     HeaderPage,
     PostPage,
     BarbeariaPage,
@@ -70,6 +72,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     TabsPage,
     FeedPage,
     PostViewPage,
+    LoginPage,
     HeaderPage,
     PostPage,
     BarbeariaPage
