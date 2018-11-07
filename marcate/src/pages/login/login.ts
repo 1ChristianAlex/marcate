@@ -18,20 +18,16 @@ export class LoginPage {
     public navParams: NavParams,
     public authService: AuthService,
     public toastCtrl: ToastController,
-    ) {
-    this.user = {
-      email: '',
-      password: ''
-    }
-  }
+    ) { }
 
   signIn () {
+    let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
     this.authService.signIn(this.user)
     .then(() => {
       this.navCtrl.setRoot(TabsPage);
     })
     .catch(error => {
-      let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
+      toast.setMessage('ERRO =>');
       toast.present();
       console.log('ERROR => ', error);
 

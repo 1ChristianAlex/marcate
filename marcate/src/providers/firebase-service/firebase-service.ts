@@ -1,3 +1,4 @@
+import { User } from './../auth/user';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { ModelPost } from '../../pages/feed/post-view/model.postView';
@@ -19,6 +20,7 @@ export class FirebaseServiceProvider {
     console.log('Hello FirebaseServiceProvider Provider');
   }
   post_list:Observable<any[]>;
+  user:Observable<any[]>;
   list_ofpost:any;
 
   savePost(post_save:ModelPost){
@@ -27,6 +29,18 @@ export class FirebaseServiceProvider {
       console.log(r);
     });
   }
+
+  saveUser(user: User){
+    this.db.list('usuarios').push(user)
+    .then(r => {
+      console.log(r);
+    });
+  }
+
+  getUser ():any {
+    this.user = this.db.list('usuarios').valueChanges();
+  }
+
   getPost():any{
 
     this.post_list = this.db.list('DB_POSTS').valueChanges();

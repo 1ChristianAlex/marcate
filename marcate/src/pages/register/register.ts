@@ -4,6 +4,7 @@ import { AuthService } from './../../providers/auth/auth-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { User } from '../../providers/auth/user';
+import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
 
 /**
  * Generated class for the RegisterPage page.
@@ -26,35 +27,64 @@ export class RegisterPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public authService: AuthService
+    public authService: AuthService,
+    public dbService: FirebaseServiceProvider,
     ) {
 
   }
 
   ionViewDidLoad() {
-    this.user = {
-      email: '',
-      password: ''
-    }
     console.log('ionViewDidLoad RegisterPage');
   }
 
 
   // if (this.regexpEmail.test(this.user.email)) {
 
+    saveUser(){
+
+      try {
+        console.log('Sim');
+
+        let today = new Date()
+        this.user = {
+          nome : this.user.nome,
+          telefone: this.user.telefone,
+          password: this.user.password,
+          email: this.user.email
+
+        }
+        console.log('user', this.user);
+        this.dbService.saveUser(this.user);
+        // this.goBack();
+        // this.saveImg();
+
+        this.sucessToaster();
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
+
+    sucessToaster() {
+      let toast = this.toastCtrl.create(
+        {
+          message:'Usuário criado com sucesso',
+          duration:3000,
+          position:'bottom'
+        });
+        toast.onDidDismiss(() =>{
+          console.log('Dismissed toast');
+        })
+    }
+
   createAccout() {
-    let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
-    console.log(toast);
 
     this.authService.createUser(this.user)
     .then((user: any) => {
-      toast.setMessage('Usuário Criado com sucesso');
-      toast.present();
-
+      this.saveUser();
       this.navCtrl.setRoot(TabsPage);
     })
     .catch(error => {
-      toast.setMessage(error.code);
       console.log('error =>>',error);
     });
   }

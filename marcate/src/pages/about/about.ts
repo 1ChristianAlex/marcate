@@ -1,7 +1,8 @@
+import { TabsPage } from './../tabs/tabs';
 import { LoginPage } from './../login/login';
 import { AuthService } from './../../providers/auth/auth-service';
 import { Component } from '@angular/core';
-import { NavController, Events } from 'ionic-angular';
+import { NavController, Events, ToastController } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -12,17 +13,19 @@ export class AboutPage {
   constructor(
     public navCtrl: NavController,
     public events: Events,
-    public authService :AuthService
+    public authService :AuthService,
+    public toastCtrl: ToastController,
     ) {
 
   }
 
   signOut() {
+    let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
     this.authService.signOut()
     .then(() => {
-      console.log('Sim');
-
-      this.navCtrl.setRoot(LoginPage);
+      this.navCtrl.push('LoginPage');
+      toast.setMessage('Você foi deslogado.');
+      toast.present();
     })
     .catch( error => {
       console.log('ERROR', error);

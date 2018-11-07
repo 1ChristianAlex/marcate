@@ -25,6 +25,16 @@
     <ion-input type="password" [(ngModel)]="user.password"></ion-input>
   </ion-item>
 
+  <ion-item>
+    <ion-label floating>Nome</ion-label>
+    <ion-input type="text" [(ngModel)]="user.nome"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Telefone</ion-label>
+    <ion-input type="text" [(ngModel)]="user.telefone"></ion-input>
+  </ion-item>
+
   <div padding>
     <button ion-button color="light" (click)="createAccout()">Cadastrar</button>
   </div>

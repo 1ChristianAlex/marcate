@@ -18,8 +18,6 @@ export class AuthService {
   }
 
   signOut() {
-    console.log('Entrou no logout');
-
     return this.angularFireAuth.auth.signOut();
   }
 
