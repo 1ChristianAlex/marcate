@@ -10,13 +10,21 @@ import { Observable } from 'rxjs';
 })
 export class HomePage {
   
+  @ViewChild('searchbar') searchbar: any;
   @ViewChild('map') mapObj;
-
+  
+  
+focusButton() {
+  console.log('Sim');
+    this.searchbar.setFocus();
+  }
+  
   barbearias: Observable<any[]>;
   markers = [];
 
   fabR:number = 30;
-
+  buscar = false;
+  
   constructor(
     public navCtrl: NavController, 
     public geolocation: Geolocation, 
@@ -57,6 +65,14 @@ export class HomePage {
       duration: 3000
     });
     loader.present();
+  }
+  
+  exibirBusca() {
+    console.log('Sim');
+    setTimeout(() => {
+      this.searchbar.setFocus();
+    },150);
+    this.buscar = !this.buscar;
   }
 
 }
