@@ -34,6 +34,12 @@
           </span>
         </ion-item>
 
+        <ion-slides class="slider" slidesPerView="3">
+          <ion-slide class="slide" *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]">
+            <img id="barber-avatar" src="{{ 'assets/imgs/barbearia'+i+'.jpg' }}"/>
+          </ion-slide>
+        </ion-slides>
+
     </ion-list>
   </div>
 

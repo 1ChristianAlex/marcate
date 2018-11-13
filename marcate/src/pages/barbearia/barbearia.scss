@@ -17,4 +17,16 @@ page-barbearia {
         display: flex;
         flex-direction: column;
     }
+
+    .slide {
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider-slides{
+        display: flex;
+        flex-direction: row;
+    }
 }
