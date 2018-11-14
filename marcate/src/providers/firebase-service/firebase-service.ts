@@ -47,5 +47,19 @@ export class FirebaseServiceProvider {
 
 
   }
-
+  removePost(key){
+    
+    this.db.list('DB_POSTS').remove(key).then(
+      () =>{
+        console.log(key);
+      }
+      );
+    }
+    returnKey(){
+       this.db.list('DB_POSTS').snapshotChanges().subscribe((write_post)=> {
+        write_post.map(item =>{
+          item.payload.key
+        })
+        })
+    }
 }

@@ -76,9 +76,10 @@ export class PostPage {
     savePost(){
       try {
         
-        let today = new Date()
+        let today = new Date();
         this.post_save ={ userName : 'Teste Marcate',
         likeCount : 0,
+        
         comentCount :0,
         postContent : this.in_post,
         imgPath : this.myPhoto,
@@ -115,6 +116,7 @@ export class PostPage {
         toast.onDidDismiss(() =>{
           console.log('Dismissed toast');
         })
+        toast.present();
       }
       removeImage(){
         this.myPhoto = undefined;

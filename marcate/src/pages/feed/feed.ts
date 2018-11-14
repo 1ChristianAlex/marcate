@@ -26,13 +26,15 @@ export class FeedPage {
   }
 
   feedPost:ModelPost[] = []
+  itemSelected:ModelPost;
   
 
   FeedThe_feed(){
     this.loadingBox();
     this.db.post_list.subscribe((write_post)=> {
-      write_post.reverse().forEach((post_object:ModelPost,i,array)=> {
-        this.feedPost[i] = post_object;
+      write_post.forEach((post_object:ModelPost,i,array)=> {
+        this.feedPost.push(post_object)
+      
         })
       })
   }
@@ -56,5 +58,10 @@ export class FeedPage {
   createPost(){
     this.navCtrl.push(PostPage);
     (document.querySelector('.tabbar.show-tabbar') as HTMLElement).style.visibility = "hidden";
+}
+countItem(item:ModelPost):ModelPost{
+  this.itemSelected = item;
+  console.log(this.itemSelected.key);
+  return this.itemSelected;
 }
 }

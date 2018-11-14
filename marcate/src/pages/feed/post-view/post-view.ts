@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ModelPost } from './model.postView';
+import { ActionSheetController } from "ionic-angular";
+import { FeedPage } from "../feed";
+import { FirebaseServiceProvider } from "../../../providers/firebase-service/firebase-service";
 
 /**
  * Generated class for the PostViewPage page.
@@ -16,12 +19,44 @@ import { ModelPost } from './model.postView';
 })
 export class PostViewPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private actionSheetCtrl:ActionSheetController,
+    public fromFeed:FeedPage, private db:FirebaseServiceProvider) {
   }
   @Input() posts:ModelPost;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PostViewPage');
   }
+  infoFeed = this.fromFeed;
+  presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Opções',
+      buttons: [
+        {
+          text: 'Editar',
+          handler: () => {
+            console.log(this.infoFeed.itemSelected);
+          }
+        },
+        {
+          text: 'Excluir',
+          handler: () => {
+            let key = this.infoFeed.itemSelected.$key;
+            this.db.removePost(key);
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+ 
+    actionSheet.present();
+  }
+ 
+ }
 
-}

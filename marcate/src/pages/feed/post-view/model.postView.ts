@@ -1,4 +1,5 @@
 export interface ModelPost{
+    $key?:string,
     userName:string;
     datePost:string;
     imgPath?:string;

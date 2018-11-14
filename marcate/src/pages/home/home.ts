@@ -3,6 +3,7 @@ import { NavController, AlertController, LoadingController } from 'ionic-angular
 import { Geolocation } from "@ionic-native/geolocation";
 import { AngularFireDatabase } from "@angular/fire/database";
 import { Observable } from 'rxjs';
+import { FirebaseServiceProvider } from "../../providers/firebase-service/firebase-service";
 
 @Component({
   selector: 'page-home',
@@ -18,6 +19,7 @@ export class HomePage {
   fabR:number = 30;
 
   constructor(
+    public teste:FirebaseServiceProvider,
     public navCtrl: NavController, 
     public geolocation: Geolocation, 
     public alertCtrl: AlertController,
@@ -34,7 +36,8 @@ export class HomePage {
 	      }));
 	  } catch (err) {
 	  	console.log('deu ruim dmssss');
-	  }
+    }
+    this.teste.returnKey()
   }
 
   markBarberShop (barberShop, index) {

@@ -5,21 +5,26 @@
   Ionic pages and navigation.
 -->
 <ion-card>
-
-  <ion-item>
-    <ion-avatar item-start>
-      <ion-icon style = 'font-size: 2em;' name="contact"></ion-icon>
-    </ion-avatar>
-    <h2>{{posts.userName}}</h2>
-    <p>{{posts.datePost}}</p>
-  </ion-item>
+  <ion-card-header>
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon style = 'font-size: 2em;' name="contact"></ion-icon>
+      </ion-avatar>
+      <h2 >{{posts.userName}}</h2>
+      <p>{{posts.datePost}}</p>
+    </ion-item>
+      <ion-item class = 'selectOption' >
+        <ion-label (click)="presentActionSheet()"><ion-icon float-right id = 'icon-more'  name="more"></ion-icon></ion-label>
+      </ion-item>
+  </ion-card-header>
+  
 
   <img  [src]="posts.imgPath"/>
-
+  
   <ion-card-content>
-    <p>{{posts.postContent}}</p>
+    <p >{{posts.postContent}}</p>
   </ion-card-content>
-
+  
   <ion-row>
     <ion-col>
       <button ion-button icon-start clear small>
