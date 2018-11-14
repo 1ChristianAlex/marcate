@@ -61,7 +61,7 @@ export class FeedPage {
 }
 countItem(item:ModelPost):ModelPost{
   this.itemSelected = item;
-  console.log(this.itemSelected.key);
+  console.log(this.itemSelected);
   return this.itemSelected;
 }
 }
