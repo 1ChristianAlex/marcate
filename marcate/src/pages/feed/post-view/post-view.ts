@@ -6,11 +6,11 @@ import { FeedPage } from "../feed";
 import { FirebaseServiceProvider } from "../../../providers/firebase-service/firebase-service";
 
 /**
- * Generated class for the PostViewPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+* Generated class for the PostViewPage page.
+*
+* See https://ionicframework.com/docs/components/#navigation for more info on
+* Ionic pages and navigation.
+*/
 
 @IonicPage()
 @Component({
@@ -18,45 +18,47 @@ import { FirebaseServiceProvider } from "../../../providers/firebase-service/fir
   templateUrl: 'post-view.html',
 })
 export class PostViewPage {
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, private actionSheetCtrl:ActionSheetController,
     public fromFeed:FeedPage, private db:FirebaseServiceProvider) {
-  }
-  @Input() posts:ModelPost;
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PostViewPage');
-  }
-  infoFeed = this.fromFeed;
-  presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Opções',
-      buttons: [
-        {
-          text: 'Editar',
-          handler: () => {
-            console.log(this.infoFeed.itemSelected);
+    }
+    @Input() posts:ModelPost;
+    
+    ionViewDidLoad() {
+      console.log('ionViewDidLoad PostViewPage');
+    }
+    infoFeed = this.fromFeed;
+    presentActionSheet() {
+      let actionSheet = this.actionSheetCtrl.create({
+        title: 'Opções',
+        buttons: [
+          {
+            text: 'Editar',
+            handler: () => {
+              console.log(this.infoFeed.itemSelected);
+            }
+          },
+          {
+            text: 'Excluir',
+            handler: () => {
+              let key = this.infoFeed.itemSelected.$key;
+              console.log(this.infoFeed.itemSelected.$key)
+              this.db.removePost(key);
+            }
+          },
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
           }
-        },
-        {
-          text: 'Excluir',
-          handler: () => {
-            let key = this.infoFeed.itemSelected.$key;
-            this.db.removePost(key);
-          }
-        },
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
- 
-    actionSheet.present();
+        ]
+      });
+      
+      actionSheet.present();
+    }
+    
   }
- 
- }
-
+  
+  

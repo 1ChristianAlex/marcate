@@ -43,7 +43,7 @@ export class FirebaseServiceProvider {
 
   getPost():any{
 
-    this.post_list = this.db.list('DB_POSTS').valueChanges();
+    this.post_list = this.db.list('DB_POSTS').snapshotChanges();
 
 
   }

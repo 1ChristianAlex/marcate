@@ -25,18 +25,21 @@ export class FeedPage {
     private loading:LoadingController) {
   }
 
-  feedPost:ModelPost[] = []
+  feedPost:any[] = []
   itemSelected:ModelPost;
   
 
   FeedThe_feed(){
     this.loadingBox();
-    this.db.post_list.subscribe((write_post)=> {
-      write_post.forEach((post_object:ModelPost,i,array)=> {
-        this.feedPost.push(post_object)
-      
+      this.db.post_list.subscribe((write_post)=> {
+      write_post.map(item =>{
+        this.feedPost.push({$key:item.key,...item.payload.val()
         })
+        
+        
       })
+      })
+      console.log(this.feedPost)
   }
 
   loadingBox() {
