@@ -7,4 +7,10 @@ google-maps {
     .barber-name {
         color: #084d6e;
     }
+
+    .info-window-barbershop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

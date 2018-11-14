@@ -1,6 +1,6 @@
 import { TabsPage } from './../pages/tabs/tabs';
 import { LoginPage } from './../pages/login/login';
-import { HomePage } from './../pages/home/home';
+// import { HomePage } from './../pages/home/home';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
