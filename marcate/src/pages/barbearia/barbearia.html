@@ -5,25 +5,22 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Barbearia</ion-title>
+    <page-header></page-header>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-  <ion-icon id="back-icon" name="arrow-back" (click)="back()"></ion-icon>
 
   <div class="wrapper">
     <img id="barber-avatar" src="{{ 'assets/imgs/barbearia'+index+'.jpg' }}"/>
-    <ion-list no-lines style="padding-top: 20px">
+    <ion-list style="padding-top: 20px">
 
         <ion-item>
           <ion-icon name="pricetag" item-start></ion-icon>
           <h2>Nome</h2>
-          <p>{{ barbearia.nome }}</p>
+          <p style="color: #fff; font-size: 22px">{{ barbearia.nome }}</p>
         </ion-item>
 
         <ion-item>
@@ -31,14 +28,74 @@
           <h2>Ranking</h2>
           <span *ngFor="let s of ' '.repeat(barbearia.estrelas).split('')">
             <ion-icon name="star" color="yellow"></ion-icon>
-          </span>
+          </span><span style="padding-left: 10px">3.4 / 5</span>
         </ion-item>
 
-        <ion-slides class="slider" slidesPerView="3">
-          <ion-slide class="slide" *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]">
-            <img id="barber-avatar" src="{{ 'assets/imgs/barbearia'+i+'.jpg' }}"/>
+        <ion-item-divider color="light">Promoções Fidelidade</ion-item-divider>
+        <ion-item class="card-background-page">
+          <ion-slides class="slider" spaceBetween="-15">
+            <ion-slide class="slide">
+              <ion-card>
+                <img src="{{ 'assets/imgs/barbearia'+index+'.jpg' }}"/>
+                <div class="overlay"></div>
+                <div class="card-title">Corte extra!</div>
+                <div class="card-subtitle">Ao completar 4 cortes, o 5º sai de graça!</div>
+              </ion-card>
+            </ion-slide>
+            <ion-slide class="slide">
+              <ion-card>
+                <img src="{{ 'assets/imgs/barbearia'+index+'.jpg' }}"/>
+                <div class="overlay"></div>
+                <div class="card-title">Corte extra!</div>
+                <div class="card-subtitle">Ao completar 4 cortes, o 5º sai de graça!</div>
+              </ion-card>
+            </ion-slide>
+            <ion-slide class="slide">
+              <ion-card>
+                <img src="{{ 'assets/imgs/barbearia'+index+'.jpg' }}"/>
+                <div class="overlay"></div>
+                <div class="card-title">Corte extra!</div>
+                <div class="card-subtitle">Ao completar 4 cortes, o 5º sai de graça!</div>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </ion-item>
+
+        <ion-item-divider color="light">Cortes</ion-item-divider>
+        <ion-slides class="slider" slidesPerView="3" spaceBetween="10">
+          <ion-slide class="slide" *ngFor="let i of [0, 1, 2, 3, 4, 5]">
+            <img id="barber-avatar" style="min-height: 80px" src="{{ 'assets/imgs/corte'+i+'.jpg' }}" (click)="goToProduct('corte'+i+'.jpg')"/>
+            <span>R$ 33,33</span>
           </ion-slide>
         </ion-slides>
+
+        <ion-item-divider color="light">Galeria</ion-item-divider>
+        <ion-slides class="slider" slidesPerView="3" spaceBetween="10">
+          <ion-slide class="slide" *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]">
+            <img id="barber-avatar" style="min-height: 80px" src="{{ 'assets/imgs/barbearia'+i+'.jpg' }}" (click)="goToProduct('barbearia'+i+'.jpg')"/>
+          </ion-slide>
+        </ion-slides>
+        
+        <ion-item-divider color="light">Produtos</ion-item-divider>
+        <ion-slides class="slider" slidesPerView="3" spaceBetween="10">
+          <ion-slide class="slide" *ngFor="let i of [0, 1, 2, 3, 4, 5]">
+            <img id="barber-avatar" style="min-height: 80px" src="{{ 'assets/imgs/produto'+i+'.jpg' }}" (click)="goToProduct('produto'+i+'.jpg')"/>
+            <span>R$ 33,33</span>
+          </ion-slide>
+        </ion-slides>
+
+        <ion-item-divider color="light" style="margin-top: 80px">Contato</ion-item-divider>
+        <ion-item>
+          <ion-icon name="call" item-start></ion-icon>
+          <h2>Telefone</h2>
+          <p style="color: #fff;">(31) 3333-3333</p>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon name="map" item-start></ion-icon>
+          <h2>Endereço</h2>
+          <p style="color: #fff;">Rua Exemplo, Bairro - Belo Horizonte</p>
+        </ion-item>
 
     </ion-list>
   </div>

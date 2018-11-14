@@ -137,3 +137,7 @@ ion-item.item-gadget{
 ion-item.item-gadget button{
   padding: 15px!important;
 }
+.back-button {
+  position: absolute !important;
+  z-index: 99 !important;
+}

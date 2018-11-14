@@ -95,7 +95,12 @@ export class GoogleMapsComponent {
 
   addInfoWindow (marker, barberShop) {
     let infoWindow = new google.maps.InfoWindow({
-      content: `<h2 class="barber-name" id="barber-link-${barberShop.nome}">${barberShop.nome}</h2>`
+      content: `
+        <div id="barber-link-${barberShop.nome}" class="info-window-barbershop">
+          <h2 class="barber-name">${barberShop.nome}</h2>
+          <span style="color: black">💈 Ver Perfil 💈</span>
+        </div>
+      `
     });
     google.maps.event.addListener(marker, 'click', () => {
       this.infoWindows.forEach(item => item.close());

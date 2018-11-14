@@ -3,12 +3,15 @@ page-header {
 
         @import url('https://fonts.googleapis.com/css?family=Pattaya');
     }
-.header-logo{
-font-family: 'Pattaya';
-span{
-    position: relative;
-    top: -15px;
-    padding-left: 10px;
-}
-}
+    .header-logo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Pattaya';
+        span{
+            position: relative;
+            // top: -15px;
+            padding-left: 10px;
+        }
+    }
 }

@@ -18,6 +18,7 @@ import { FeedPage } from '../pages/feed/feed';
 import { PostPage } from '../pages/feed/post/post';
 import { GoogleMapsComponent } from '../components/google-maps/google-maps';
 import { BarbeariaPage } from "../pages/barbearia/barbearia";
+import { ProductPage } from "../pages/product/product";
 
 import { AuthService } from '../providers/auth/auth-service';
 
@@ -54,6 +55,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     HeaderPage,
     PostPage,
     BarbeariaPage,
+    ProductPage,
     GoogleMapsComponent
   ],
   imports: [
@@ -75,6 +77,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     LoginPage,
     HeaderPage,
     PostPage,
+    ProductPage,
     BarbeariaPage
   ],
   providers: [

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <page-header></page-header>
   </ion-navbar>
 </ion-header>
 
@@ -8,17 +8,20 @@
   <div id="home-wrapper">
     <google-maps #map id="mapFromGoogle"></google-maps>
     <ion-list class="overflow-list">
+
       <ion-card *ngFor="let barbearia of barbearias | async; index as i" (click)="markBarberShop(barbearia, i)">
-        <img src="{{ 'assets/imgs/barbearia'+i+'.jpg' }}"/>
+        <div class="image-div" [ngStyle]="{'background-image': 'url(assets/imgs/barbearia' + i + '.jpg)'}">
+        </div>
         <ion-card-content>
           <ion-card-title>
             {{ barbearia.nome }}
           </ion-card-title>
           <span *ngFor="let s of ' '.repeat(barbearia.estrelas).split('')">
-            <ion-icon name="star" color="yellow"></ion-icon>
+            <ion-icon name="star" class="star" color="yellow"></ion-icon>
           </span>
         </ion-card-content>
       </ion-card>
+      
     </ion-list>
   </div>
 
