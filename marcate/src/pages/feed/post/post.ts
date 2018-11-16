@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController,  } from 'ionic-angular';
 
 import { FirebaseServiceProvider } from '../../../providers/firebase-service/firebase-service';
 import { ModelPost } from '../post-view/model.postView';
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { storage } from 'firebase';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @IonicPage()
@@ -20,15 +21,23 @@ export class PostPage {
     }
     
     
-    
+    btnEdit:boolean = true;
     private myPhoto:any;
     in_post:string;
+    keyEdit:any
     
     
     ionViewDidLoad() {
       console.log('ionViewDidLoad PostPage');
       this.dbService.getPost();
       console.log(this.myPhoto)
+      if (this.navParams.data.itemEdid !=undefined) {
+        this.btnEdit = false;
+        this.keyEdit = this.editPost();
+      }
+      else{
+        this.btnEdit = true;
+      }
     }
     
     goBack(){
@@ -92,7 +101,7 @@ export class PostPage {
         this.goBack();
         this.saveImg();
         
-        this.sucessToaster();
+        this.sucessToaster('Seu conteudo foi postado');
       } catch (error) {
         console.log(error)
       }
@@ -106,10 +115,10 @@ export class PostPage {
     
     
     
-    sucessToaster(){
+    sucessToaster(Messange:string){
       let toast = this.toasteCtrl.create(
         {
-          message:'Sucesso na postagem',
+          message:Messange,
           duration:3000,
           position:'bottom'
         });
@@ -120,6 +129,30 @@ export class PostPage {
       }
       removeImage(){
         this.myPhoto = undefined;
+      }
+      editPost(){
+        let postSelect:ModelPost = this.navParams.data.itemEdid;
+        console.log(postSelect)
+        this.myPhoto = postSelect.imgPath;
+        this.in_post = postSelect.postContent;
+        return postSelect.$key;
+      }
+      edPost(){
+        let today = new Date();
+        
+        this.dbService.edPost(this.keyEdit,{
+          datePost:`${today.getHours().toString()}:${today.getMinutes().toString()}-${today.getDate().toString()}/${today.getMonth().toString()}`,
+          comentCount: 0,
+          likeCount: 0,
+          userName:"Teste Edit",
+          imgPath:this.myPhoto,
+          postContent:this.in_post
+         }).then(
+           i =>{
+             this.goBack()
+             this.sucessToaster('Seu conteudo foi editado');
+           }
+         )
       }
     }
     

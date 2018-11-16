@@ -12,7 +12,7 @@
 
 
 <ion-content >
-  <div class="postFeed" *ngFor="let item of feedPost" >
+  <div class="postFeed" *ngFor="let item of feedPost.reverse()">
     <page-post-view (click)="countItem(item)" [posts] = 'item' ></page-post-view>
   </div>
   <button class= 'btn-ionic' ion-fixed ion-button round icon-only id ='icon-post' (click)="createPost()"><ion-icon name="add"></ion-icon></button>

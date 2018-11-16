@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import {PostPage } from './post/post'
 import { ModelPost } from './post-view/model.postView';
 import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
+import { Observable } from 'rxjs';
+import { async } from 'rxjs/internal/scheduler/async';
 
 
 
@@ -25,18 +27,15 @@ export class FeedPage {
     private loading:LoadingController) {
   }
 
-  feedPost:any[] = []
+   feedPost:Observable<any>[] = [] 
   itemSelected:ModelPost;
   
 
   FeedThe_feed(){
     this.loadingBox();
       this.db.post_list.subscribe((write_post)=> {
-      write_post.map(item =>{
-        this.feedPost.push({$key:item.key,...item.payload.val()
-        })
-        
-        
+      write_post.map((item,i) =>{
+        this.feedPost[i] = ({$key:item.key,...item.payload.val()})
       })
       })
       console.log(this.feedPost)

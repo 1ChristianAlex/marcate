@@ -13,7 +13,8 @@
 <ion-content padding >
   
   <button class = 'btn-ionic' ion-fixed ion-button round icon-only id ='icon-back' (click)="goBack()"><ion-icon name="arrow-round-back"></ion-icon></button>
-  <button class = 'btn-ionic' ion-fixed ion-button round icon-only id = 'posting' (click)="savePost(post_save)"><ion-icon name="create"></ion-icon></button>
+  <button class = 'btn-ionic' *ngIf="btnEdit == true" ion-fixed ion-button round icon-only id = 'posting' (click)="savePost()"><ion-icon name="create"></ion-icon></button>
+  <button class = 'btn-ionic' *ngIf="btnEdit ==false " ion-fixed ion-button round icon-only id = 'posting' (click)="edPost()"><ion-icon name="build"></ion-icon></button>
   
   <div class="input-post-area">
     

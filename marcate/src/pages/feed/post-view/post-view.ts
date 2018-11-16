@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ModelPost } from './model.postView';
 import { ActionSheetController } from "ionic-angular";
 import { FeedPage } from "../feed";
+import { PostPage } from "../post/post";
 import { FirebaseServiceProvider } from "../../../providers/firebase-service/firebase-service";
 
 /**
@@ -19,7 +20,7 @@ import { FirebaseServiceProvider } from "../../../providers/firebase-service/fir
 })
 export class PostViewPage {
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private actionSheetCtrl:ActionSheetController,
+  constructor(public navCtrl: NavController,private toasteCtrl:ToastController, public navParams: NavParams, private actionSheetCtrl:ActionSheetController,
     public fromFeed:FeedPage, private db:FirebaseServiceProvider) {
     }
     @Input() posts:ModelPost;
@@ -35,7 +36,7 @@ export class PostViewPage {
           {
             text: 'Editar',
             handler: () => {
-              console.log(this.infoFeed.itemSelected);
+              this.navCtrl.push(PostPage,{itemEdid:this.infoFeed.itemSelected});
             }
           },
           {
@@ -43,7 +44,12 @@ export class PostViewPage {
             handler: () => {
               let key = this.infoFeed.itemSelected.$key;
               console.log(this.infoFeed.itemSelected.$key)
-              this.db.removePost(key);
+              this.db.removePost(key).then(dono =>{
+                console.log(dono);
+                  this.sucessToaster('Seu conteudo foi excluido')
+
+              });
+              
             }
           },
           {
@@ -58,7 +64,18 @@ export class PostViewPage {
       
       actionSheet.present();
     }
-    
+    sucessToaster(Messange:string){
+      let toast = this.toasteCtrl.create(
+        {
+          message:Messange,
+          duration:3000,
+          position:'bottom'
+        });
+        toast.onDidDismiss(() =>{
+          console.log('Dismissed toast');
+        })
+        toast.present();
+      }
   }
   
   
