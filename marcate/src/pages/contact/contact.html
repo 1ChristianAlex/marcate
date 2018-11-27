@@ -1,4 +1,4 @@
-<!-- <ion-header>
+<ion-header>
   <ion-navbar>
     <ion-title>
       Contact
@@ -8,51 +8,25 @@
 
 <ion-content>
   <div padding>
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="agenda">
+    <ion-segment [(ngModel)]="perfil">
+      <ion-segment-button value="agenda" style="color: white">
         Agenda
       </ion-segment-button>
-      <ion-segment-button value="fidelidade">
+      <ion-segment-button value="fidelidade" style="color: white">
         Fidelidade
       </ion-segment-button>
     </ion-segment>
   </div>
-
-  <div [ngSwitch]="pet">
-    <ion-list *ngSwitchCase="'agenda'">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="img/thumbnail-puppy-1.jpg">
-        </ion-thumbnail>
-        <h2>Ruby</h2>
-      </ion-item>
-      ...
-    </ion-list>
-
-    <ion-list *ngSwitchCase="'kittens'">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="img/thumbnail-kitten-1.jpg">
-        </ion-thumbnail>
-        <h2>Luna</h2>
-      </ion-item>
-      ...
-    </ion-list>
-  </div>
-
-
-  <div >
-    <ion-card tappable>
-      <ion-card-content style="border-left: 18px solid #F2D1A6;">
+<!-- Agenda -->
+  <div [ngSwitch]="perfil" style="color: black">
+    <ion-card tappable *ngSwitchCase="'agenda'">
+      <ion-card-content style="border-left: 18px solid green;">
         <ion-grid>
           <ion-row>
             <ion-col class="pap-card-col">
               <div>
                 <small class="pap-text-color-blue">
-                  Operação:
-                </small>
-                <small>
-                  fds
+                  Barbearia Dois irmãos
                 </small>
               </div>
             </ion-col>
@@ -61,20 +35,20 @@
             <ion-col class="pap-card-col">
               <div>
                 <small class="pap-text-color-blue">
-                  Local:
+                 Dia:
                 </small>
                 <small>
-                  gfd
+                  27/11/2018
                 </small>
               </div>
             </ion-col>
             <ion-col class="pap-card-col">
               <div>
                 <small class="pap-text-color-blue">
-                  Oferta:
+                  Desconto:
                 </small>
                 <small class="pap-text-red">
-                  fds
+                  Não
                 </small>
               </div>
             </ion-col>
@@ -83,20 +57,20 @@
             <ion-col class="pap-card-col">
               <div>
                 <small class="pap-text-color-blue">
-                  Função:
+                  Serviço:
                 </small>
                 <small>
-                  fds
+                  Disfarçado e ajuste na barba
                 </small>
               </div>
             </ion-col>
             <ion-col class="pap-card-col">
               <div>
                 <small class="pap-text-color-blue">
-                  Data:
+                  Valor:
                 </small>
                 <small>
-                  fds
+                 R$ 40,00
                 </small>
               </div>
             </ion-col>
@@ -105,4 +79,181 @@
       </ion-card-content>
     </ion-card>
   </div>
-</ion-content> -->
+  <div [ngSwitch]="perfil" style="color: black">
+    <ion-card tappable *ngSwitchCase="'agenda'">
+      <ion-card-content style="border-left: 18px solid #F2D1A6;">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Rui Junior Barbearia
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                 Dia:
+                </small>
+                <small>
+                  28/11/2018
+                </small>
+              </div>
+            </ion-col>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Desconto:
+                </small>
+                <small class="pap-text-red">
+                  10%
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Serviço:
+                </small>
+                <small>
+                 Escova cabelo
+                </small>
+              </div>
+            </ion-col>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Valor:
+                </small>
+                <small>
+                 R$ 20,00
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div [ngSwitch]="perfil" style="color: black">
+    <ion-card tappable *ngSwitchCase="'agenda'">
+      <ion-card-content style="border-left: 18px solid #F2D1A6;">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Barbearia Dois Irmãos
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                 Dia:
+                </small>
+                <small>
+                  02/12/2018
+                </small>
+              </div>
+            </ion-col>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Desconto:
+                </small>
+                <small class="pap-text-red">
+                  30%
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Serviço:
+                </small>
+                <small>
+                 Disfarçado, sobrancelha e ajuste na barba.
+                </small>
+              </div>
+            </ion-col>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Valor:
+                </small>
+                <small>
+                  R$ 30,00
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Fidelidade -->
+  <div [ngSwitch]="perfil" style="color: black">
+    <ion-card tappable *ngSwitchCase="'fidelidade'">
+      <ion-card-content style="border-left: 18px solid green;">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Barbearia Dois irmãos
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <label class="pap-text-color-blue">
+                  30% de desconto no corte de cabelo
+                </label>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div [ngSwitch]="perfil" style="color: black">
+    <ion-card tappable *ngSwitchCase="'fidelidade'">
+      <ion-card-content style="border-left: 18px solid yellow;">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <small class="pap-text-color-blue">
+                  Rui Junior Barber
+                </small>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="pap-card-col">
+              <div>
+                <label class="pap-text-color-blue">
+                  10% de desconto no pacote (corte + barba)
+                </label>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

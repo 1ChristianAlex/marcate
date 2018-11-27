@@ -20,14 +20,18 @@ export class LoginPage {
     public toastCtrl: ToastController,
     ) { }
 
+    ionViewDidLoad() {
+
+    }
+
   signIn () {
  try {
   let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
-  
+
   this.authService.signIn(this.user)
   .then(() => {
     this.navCtrl.setRoot(TabsPage);
-    
+
   })
   .catch(error => {
     toast.setMessage('ERRO =>');
@@ -44,7 +48,8 @@ export class LoginPage {
 
   }
 
-  register () {
+  register() {
+    // this.navCtrl.setRoot(RegisterPage);
     this.navCtrl.push('RegisterPage');
   }
 

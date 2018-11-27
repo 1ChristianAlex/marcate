@@ -1,0 +1,44 @@
+<!--
+  Generated template for the ComentsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<div class="comentarios" *ngFor="let item of feedComments">
+  
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon style = 'font-size: 2em;' name="contact"></ion-icon>
+      </ion-avatar>
+      <h2>{{item.currentUser}}</h2>
+
+    </ion-item>
+    <ion-card-content>
+      <p>{{item.comentario}}</p>
+    </ion-card-content>
+  </ion-card>
+</div>
+  <div class="comment-relative">
+      <button ion-button id = 'ionicion-send' (click)="createComment()">
+         <ion-icon ios="ios-send" md="md-send"></ion-icon>
+      </button>
+      <ion-item  id='commentInput'>
+          
+          <ion-label color="primary" floating>Escreva um comentário</ion-label>
+          <ion-textarea [(ngModel)]="writerComment">       </ion-textarea>
+            
+        </ion-item>
+        
+  </div>
+</ion-content>

@@ -54,4 +54,16 @@ export class FirebaseServiceProvider {
   edPost(key,post:ModelPost){
     return this.db.list('DB_POSTS').update(key,post);
   }
+  createComment(key,postComment:string){
+    let date = new Date()
+    let today = {
+      dia:date.getMinutes(),
+      comentario:postComment,
+      currentUser:'Christian Teste'
+    }
+    return this.db.list(`DB_POSTS/${key}/comments`).push(today)
+  }
+  listComments(key){
+    return this.db.list(`DB_POSTS/${key}/comments`).snapshotChanges();
+  }
 }

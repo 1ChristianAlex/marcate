@@ -27,15 +27,15 @@
   
   <ion-row>
     <ion-col>
-      <button ion-button icon-start clear small>
+      <button ion-button icon-start clear small (click)="likePost()">
         <ion-icon name="thumbs-up"></ion-icon>
         <div>{{posts.likeCount}} Likes</div>
       </button>
     </ion-col>
     <ion-col>
-      <button ion-button icon-start clear small>
+      <button ion-button icon-start clear small (click)="goComents()">
         <ion-icon name="text"></ion-icon>
-        <div>{{posts.comentCount}} Comments</div>
+        <div >Comments</div>
       </button>
     </ion-col>
     

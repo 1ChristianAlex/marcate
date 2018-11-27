@@ -5,6 +5,9 @@ import { ActionSheetController } from "ionic-angular";
 import { FeedPage } from "../feed";
 import { PostPage } from "../post/post";
 import { FirebaseServiceProvider } from "../../../providers/firebase-service/firebase-service";
+import { ComentsPage } from "../coments/coments";
+import { HtmlAstPath } from '@angular/compiler';
+import { Storage } from "@ionic/storage";
 
 /**
 * Generated class for the PostViewPage page.
@@ -20,15 +23,16 @@ import { FirebaseServiceProvider } from "../../../providers/firebase-service/fir
 })
 export class PostViewPage {
   
-  constructor(public navCtrl: NavController,private toasteCtrl:ToastController, public navParams: NavParams, private actionSheetCtrl:ActionSheetController,
+  constructor(public navCtrl: NavController,private toasteCtrl:ToastController,public io_storage:Storage, public navParams: NavParams, private actionSheetCtrl:ActionSheetController,
     public fromFeed:FeedPage, private db:FirebaseServiceProvider) {
     }
     @Input() posts:ModelPost;
-    
+
     ionViewDidLoad() {
       console.log('ionViewDidLoad PostViewPage');
     }
     infoFeed = this.fromFeed;
+    
     presentActionSheet() {
       let actionSheet = this.actionSheetCtrl.create({
         title: 'Opções',
@@ -75,6 +79,30 @@ export class PostViewPage {
           console.log('Dismissed toast');
         })
         toast.present();
+      }
+      goComents(){
+        
+        this.navCtrl.push(ComentsPage);
+        (document.querySelector('.tabbar.show-tabbar') as HTMLElement).style.visibility = 'hidden'
+      }
+      likePost(){
+        let postLiked:ModelPost;
+        this.io_storage.get('That_item').then(val =>{
+          postLiked = val;
+          
+          let post:ModelPost = {
+            $key:postLiked.$key,
+            likeCount:postLiked.likeCount +1,
+            ...postLiked
+          }
+          let key:string = post.$key;
+          console.log(post)
+         
+        this.db.edPost(key,{...post}).then(like =>{
+          console.log('like work')
+        })
+        })
+        
       }
   }
   

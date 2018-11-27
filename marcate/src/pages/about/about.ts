@@ -23,7 +23,7 @@ export class AboutPage {
     let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
     this.authService.signOut()
     .then(() => {
-      this.navCtrl.push('LoginPage');
+      this.navCtrl.setRoot(LoginPage);
       toast.setMessage('Você foi deslogado.');
       toast.present();
     })

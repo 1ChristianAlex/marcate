@@ -4,7 +4,9 @@ import {PostPage } from './post/post'
 import { ModelPost } from './post-view/model.postView';
 import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
 import { Observable } from 'rxjs';
-import { async } from 'rxjs/internal/scheduler/async';
+import { Storage } from "@ionic/storage";
+
+
 
 
 
@@ -24,21 +26,26 @@ import { async } from 'rxjs/internal/scheduler/async';
 export class FeedPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db:FirebaseServiceProvider,
-    private loading:LoadingController) {
+    private loading:LoadingController, private io_storage:Storage) {
   }
 
-   feedPost:Observable<any>[] = [] 
+   feedPost:Observable<ModelPost>[] = [] 
   itemSelected:ModelPost;
   
 
   FeedThe_feed(){
+  try {
     this.loadingBox();
-      this.db.post_list.subscribe((write_post)=> {
-      write_post.map((item,i) =>{
-        this.feedPost[i] = ({$key:item.key,...item.payload.val()})
-      })
-      })
-      console.log(this.feedPost)
+    this.db.post_list.subscribe((write_post)=> {
+    write_post.map((item,i) =>{
+      this.feedPost[i] = ({$key:item.key,...item.payload.val()})
+      
+    })
+    })
+  } catch (error) {
+    console.log(`Erro ao carregar o feed: ${error}`)
+  }
+      
   }
 
   loadingBox() {
@@ -63,7 +70,8 @@ export class FeedPage {
 }
 countItem(item:ModelPost):ModelPost{
   this.itemSelected = item;
-  console.log(this.itemSelected);
+  
+  this.io_storage.set('That_item',this.itemSelected)
   return this.itemSelected;
 }
 }
