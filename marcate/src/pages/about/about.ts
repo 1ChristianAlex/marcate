@@ -1,4 +1,3 @@
-import { TabsPage } from './../tabs/tabs';
 import { LoginPage } from './../login/login';
 import { AuthService } from './../../providers/auth/auth-service';
 import { Component } from '@angular/core';

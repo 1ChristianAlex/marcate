@@ -6,7 +6,6 @@ import { FeedPage } from "../feed";
 import { PostPage } from "../post/post";
 import { FirebaseServiceProvider } from "../../../providers/firebase-service/firebase-service";
 import { ComentsPage } from "../coments/coments";
-import { HtmlAstPath } from '@angular/compiler';
 import { Storage } from "@ionic/storage";
 
 /**

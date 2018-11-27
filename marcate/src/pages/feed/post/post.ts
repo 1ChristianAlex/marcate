@@ -1,11 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController,  } from 'ionic-angular';
-
 import { FirebaseServiceProvider } from '../../../providers/firebase-service/firebase-service';
 import { ModelPost } from '../post-view/model.postView';
 import { Camera, CameraOptions } from "@ionic-native/camera";
 import { storage } from 'firebase';
-import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @IonicPage()

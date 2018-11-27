@@ -4,7 +4,7 @@ import { FirebaseServiceProvider } from "../../../providers/firebase-service/fir
 import { ModelPost } from "../post-view/model.postView";
 import { Storage } from "@ionic/storage";
 import { Observable } from 'rxjs';
-import { ReturnStatement } from '@angular/compiler';
+
 
 /**
 * Generated class for the ComentsPage page.

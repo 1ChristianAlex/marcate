@@ -1,5 +1,4 @@
 import { TabsPage } from './../tabs/tabs';
-import { HomePage } from './../home/home';
 import { AuthService } from './../../providers/auth/auth-service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
@@ -46,7 +45,7 @@ export class RegisterPage {
       try {
         console.log('Sim');
 
-        let today = new Date()
+       
         this.user = {
           nome : this.user.nome,
           telefone: this.user.telefone,
