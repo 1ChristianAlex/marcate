@@ -87,9 +87,6 @@ export class PostPage {
         
         let today = new Date();
         this.post_save ={ userName : 'Teste Marcate',
-        likeCount : 0,
-        
-        comentCount :0,
         postContent : this.in_post,
         imgPath : this.myPhoto,
         datePost : `${today.getHours().toString()}:${today.getMinutes().toString()}-${today.getDate().toString()}/${today.getMonth().toString()}` }

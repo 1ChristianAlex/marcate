@@ -1,0 +1,24 @@
+page-coments {
+    .comment-relative{
+        position: relative;
+        #commentInput{
+            top: 87%;
+            position: fixed;
+            width: 91%;
+            padding-right: 16px;
+            z-index: 999;
+            background-color: #6a90a7!important
+        }
+        #ionicion-send{
+            top: 90%;
+            position: fixed;
+            right: 10%;
+            padding: 15px;
+            z-index: 9999;
+            ion-icon{
+                font-size: 13pt;
+            }
+        }
+    }
+    
+}

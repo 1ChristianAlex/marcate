@@ -19,6 +19,7 @@ import { PostPage } from '../pages/feed/post/post';
 import { GoogleMapsComponent } from '../components/google-maps/google-maps';
 import { BarbeariaPage } from "../pages/barbearia/barbearia";
 import { ProductPage } from "../pages/product/product";
+import { ComentsPage } from "../pages/feed/coments/coments";
 
 import { AuthService } from '../providers/auth/auth-service';
 
@@ -32,6 +33,7 @@ import { Camera } from "@ionic-native/camera";
 
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { IonicStorageModule } from "@ionic/storage";
 
 // const fireaseConfig = {
 //     apiKey: "AIzaSyDkLNagEN4Z27Tzl6Kiq1AHJMpXT1j-kgo",
@@ -54,6 +56,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     LoginPage,
     HeaderPage,
     PostPage,
+    ComentsPage,
     BarbeariaPage,
     ProductPage,
     GoogleMapsComponent
@@ -64,6 +67,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,6 +75,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     AboutPage,
     ContactPage,
     HomePage,
+    ComentsPage,
     TabsPage,
     FeedPage,
     PostViewPage,
