@@ -1,9 +1,3 @@
-<!--
-  Generated template for the ProductPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <page-header></page-header>
@@ -16,8 +10,27 @@
     
     <ion-row justify-content-center>
       
-      <ion-col col-6>
+      <ion-col col-6 class="main-product">
         <img [src]="'assets/imgs/'+product" class="product-image">
+        <h2>R$ 33,33</h2>
+      </ion-col>
+      <ion-col col-12>
+          <h1>Agendamento</h1>
+          <hr>
+          <h3>Barbeiro</h3>
+          <button ion-button block light (click)="showRadio()">{{ barbeiro }}</button>
+
+          <hr>
+          <h3>Pagamento</h3>
+          <button ion-button block light (click)="doCheckbox()">{{ pagamento }}</button>
+
+          <hr>
+          <h3>Horário</h3>
+          <button ion-button block light (click)="doCheckbox()">
+            <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="agendamento"></ion-datetime>
+          </button>
+          <br><br>
+          <button ion-button color="primary" block (click)="showAlert()">Agendar</button>
       </ion-col>
     </ion-row>
 

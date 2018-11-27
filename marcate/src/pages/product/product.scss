@@ -2,4 +2,9 @@ page-product {
     .product-image {
         border-radius: 50%;
     }
+    .main-product {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
 }
