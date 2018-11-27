@@ -66,4 +66,21 @@ export class FirebaseServiceProvider {
   listComments(key){
     return this.db.list(`DB_POSTS/${key}/comments`).snapshotChanges();
   }
+  likePost(post:ModelPost){
+    let key = post.$key;
+    let like:number;
+    if (post.likeCount == undefined ||post.likeCount ==null) {
+      post.likeCount = 0
+    }
+    like = post.likeCount +1;
+    console.log(post.likeCount);
+    return this.db.list('DB_POSTS').update(key,{
+      userName:post.userName,
+      datePost:post.datePost,
+      imgPath:post.imgPath,
+      postContent:post.postContent,
+      likeCount:like,
+   
+    });
+  }
 }

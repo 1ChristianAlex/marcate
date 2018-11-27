@@ -31,15 +31,15 @@ export class ComentsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ComentsPage');
     
-  
+    
   }
   ionViewDidEnter(){
     this.getItem();
-  
+    
   }
   ionViewDidLeave(){
-  this.clearItem();
-  (document.querySelector('.tabbar.show-tabbar') as HTMLElement).style.visibility = 'visible'
+    this.clearItem();
+    (document.querySelector('.tabbar.show-tabbar') as HTMLElement).style.visibility = 'visible'
   }
   clearItem(){
     this.io_storage.remove('That_item').then(res =>{
@@ -52,31 +52,31 @@ export class ComentsPage {
       this.listComents(val)
     })
     console.log(this.postComment)
-   
+    
   }
   createComment(){
     
     console.log('teste correto')
     console.log(this.postComment)
-  
+    
     
     this.db.createComment(this.postComment.$key,this.writerComment).then(
       item =>{
         console.log(item)
         this.writerComment = '';
-
+        
       }
       )
     }
     
     listComents(key){      
       console.log('list has nice')
-this.db.listComments(key.$key).subscribe(sub =>{
-  sub.map((item,i)=>{
-    this.feedComments[i] = ({...item.payload.val()} as any)
-    console.log(this.feedComments[i])
-  })
-})
+      this.db.listComments(key.$key).subscribe(sub =>{
+        sub.map((item,i)=>{
+          this.feedComments[i] = ({...item.payload.val()} as any)
+          console.log(this.feedComments[i])
+        })
+      })
     }
     
   }
