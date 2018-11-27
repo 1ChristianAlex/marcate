@@ -32,8 +32,8 @@ export class BarbeariaPage {
     this.navCtrl.pop();
   }
 
-  goToProduct (index) {
-    this.navCtrl.push(ProductPage, { data: index });
+  goToProduct (index, type) {
+    this.navCtrl.push(ProductPage, { data: index, type: type });
   }
 
 }

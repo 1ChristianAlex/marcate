@@ -64,22 +64,22 @@
         <ion-item-divider color="light">Cortes</ion-item-divider>
         <ion-slides class="slider" slidesPerView="3" spaceBetween="10">
           <ion-slide class="slide" *ngFor="let i of [0, 1, 2, 3, 4, 5]">
-            <img id="barber-avatar" style="min-height: 80px" src="{{ 'assets/imgs/corte'+i+'.jpg' }}" (click)="goToProduct('corte'+i+'.jpg')"/>
+            <img id="barber-avatar" style="min-height: 80px" src="{{ 'assets/imgs/corte'+i+'.jpg' }}" (click)="goToProduct('corte'+i+'.jpg', 1)"/>
             <span>R$ 33,33</span>
           </ion-slide>
         </ion-slides>
-
+<!-- 
         <ion-item-divider color="light">Galeria</ion-item-divider>
         <ion-slides class="slider" slidesPerView="3" spaceBetween="10">
           <ion-slide class="slide" *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7]">
             <img id="barber-avatar" style="min-height: 80px" src="{{ 'assets/imgs/barbearia'+i+'.jpg' }}" (click)="goToProduct('barbearia'+i+'.jpg')"/>
           </ion-slide>
-        </ion-slides>
+        </ion-slides> -->
         
         <ion-item-divider color="light">Produtos</ion-item-divider>
         <ion-slides class="slider" slidesPerView="3" spaceBetween="10">
           <ion-slide class="slide" *ngFor="let i of [0, 1, 2, 3, 4, 5]">
-            <img id="barber-avatar" style="min-height: 80px" src="{{ 'assets/imgs/produto'+i+'.jpg' }}" (click)="goToProduct('produto'+i+'.jpg')"/>
+            <img id="barber-avatar" style="min-height: 80px" src="{{ 'assets/imgs/produto'+i+'.jpg' }}" (click)="goToProduct('produto'+i+'.jpg', 0)"/>
             <span>R$ 33,33</span>
           </ion-slide>
         </ion-slides>

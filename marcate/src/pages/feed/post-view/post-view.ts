@@ -85,19 +85,15 @@ export class PostViewPage {
         (document.querySelector('.tabbar.show-tabbar') as HTMLElement).style.visibility = 'hidden'
       }
       likePost(){
-        let postLiked:ModelPost;
+        let  postLiked:ModelPost;
         this.io_storage.get('That_item').then(val =>{
-          postLiked = val;
+            postLiked = {...val};
           
-          let post:ModelPost = {
-            $key:postLiked.$key,
-            likeCount:postLiked.likeCount +1,
-            ...postLiked
-          }
-          let key:string = post.$key;
-          console.log(post)
+          
+          
+          console.log(postLiked)
          
-        this.db.edPost(key,{...post}).then(like =>{
+        this.db.likePost(postLiked).then(like =>{
           console.log('like work')
         })
         })
