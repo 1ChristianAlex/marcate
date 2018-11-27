@@ -41,6 +41,7 @@ export class RegisterPage {
   // if (this.regexpEmail.test(this.user.email)) {
 
     saveUser(){
+    let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
 
       try {
         console.log('Sim');
@@ -57,7 +58,8 @@ export class RegisterPage {
         this.dbService.saveUser(this.user);
         // this.goBack();
         // this.saveImg();
-
+        toast.setMessage('Usuário criado com sucesso');
+        toast.present();
         this.sucessToaster();
       } catch (error) {
         console.log(error)
